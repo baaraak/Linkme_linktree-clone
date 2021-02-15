@@ -1,0 +1,71 @@
+.auth {
+    background: #f5f6f8;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem 1rem 0;
+
+    .slogan {
+        margin: 1rem 0 2rem 0;
+        text-align: center;
+    }
+
+
+    .forms {
+        position: relative;
+        width: 26rem;
+        max-width: 100%;
+
+        form {
+            position: absolute;
+            background: #fff;
+            padding: 2rem;
+            width: 100%;
+        }
+    }
+
+    .separator {
+        color: #7e8287;
+        position: relative;
+        text-align: center;
+        margin: .5rem 0;
+
+        span {
+            position: relative;
+            display: inline-block;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 1rem;
+            font-size: .9rem;
+            z-index: 2
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            background-color: #d7dce1;
+            transform: translateY(-50%);
+            z-index: 1
+        }
+    }
+
+    .resetPassword {
+        text-align: center;
+        width: 100%;
+        display: block;
+        margin-top: 1.5rem;
+        cursor: pointer;
+    }
+
+    .toggleLink {
+        display: block;
+        margin-top: 1rem;
+        text-align: center;
+        cursor: pointer;
+    }
+}
