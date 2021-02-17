@@ -1,0 +1,75 @@
+.dashboard {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 64px 1fr 570px;
+    grid-template-rows: min-content;
+
+    header {
+        
+        grid-row: span 2;
+    }
+
+    .menu {
+        height: 64px;
+        border: 1px solid rgb(218, 222, 224);
+        border-width: 0 1px;
+    }
+
+    .toolbar {
+        height: 64px;
+        
+    }
+
+    .page {
+        background: #f5f6f8;
+        border: 1px solid rgb(218, 222, 224);
+        border-bottom: none;
+    }
+
+    .preview {
+        background: #f5f6f8;
+        border-top: 1px solid rgb(218, 222, 224);
+    }
+
+    // @media only screen and (max-width: 1260px) {
+    //     // .toolbar,
+    //     // .preview {
+    //     //     width: 570px;
+    //     // }
+    //     grid-template-columns: 64px 1fr 570px;
+    // }
+
+    @media only screen and (max-width: 1260px) {
+        & {
+            grid-template-columns: 64px 1fr 435px;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        & {
+            grid-template-columns: 64px 1fr 300px;
+        }
+
+        .menu {
+            height: 48px;
+        }
+    
+        .toolbar {
+            height: 48px;
+        }
+    }
+    
+    @media only screen and (max-width: 768px) {
+        & {
+            grid-template-columns: 64px 1fr 300px;
+        }
+
+        .menu {
+            height: 48px;
+        }
+    
+        .toolbar {
+            height: 48px;
+        }
+    }
+}

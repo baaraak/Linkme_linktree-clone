@@ -1,0 +1,1 @@
+export const MINIMUM_PREVIEW_WIDTH = 768;
