@@ -1,19 +1,33 @@
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm, Controller } from "react-hook-form";
-import { Text, TextInputField, Link } from "evergreen-ui";
+import { Text, TextInputField, Link, Alert } from "evergreen-ui";
 import { Link as RouterLink } from "react-router-dom";
 import React, { useState } from "react";
 import { signupSchema } from "../../validations/auth.validation";
 import GoogleIcon from "../../assets/icons/Google";
 import Button from "../../components/button/Button";
+import api from "../../services/api";
+import { storeAuthToken } from "../../services/token";
+import { useAuth } from "../../context/auth.context";
 
 export default function SignUp() {
   const { control, handleSubmit, errors } = useForm({
     resolver: joiResolver(signupSchema),
   });
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState();
+  const { register } = useAuth();
 
-  const onSubmit = (data) => {};
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      const results = await register(data);
+    } catch (err) {
+      setApiError(err);
+    }
+    setLoading(false);
+  };
 
   return (
     <form className="shadow-md" onSubmit={handleSubmit(onSubmit)}>
@@ -23,6 +37,10 @@ export default function SignUp() {
       <div className="separator">
         <span>or</span>
       </div>
+
+      {!!apiError && (
+        <Alert intent="danger" marginBottom={15} title={apiError} />
+      )}
 
       <Controller
         name="username"
@@ -91,7 +109,7 @@ export default function SignUp() {
           />
         )}
       />
-      <Button fullWidth appearance="primary">
+      <Button fullWidth isLoading={loading} appearance="primary">
         Create Account
       </Button>
       <Link is={RouterLink} to="/signin" className="toggleLink">

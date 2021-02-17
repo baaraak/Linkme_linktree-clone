@@ -1,10 +1,12 @@
+import { getStoredAuthToken } from "./token";
+
 const API_URL =
   process.env.NODE_ENV === "production"
     ? "https://---"
     : "http://localhost:3001";
 
 function callApi(url, method = "GET", data) {
-  const token = localStorage.getItem("linkme-token");
+  const token = getStoredAuthToken();
   const headers = {
     Accept: "application/json",
     "content-type": "application/json",
@@ -21,6 +23,7 @@ function callApi(url, method = "GET", data) {
 
 export default {
   auth: {
+    me: () => callApi("/auth/me"),
     login: (user) => callApi("/auth/login", "POST", user),
     register: (user) => callApi("/auth/register", "POST", user),
     resetPassword: (user) => callApi("/auth/register", "POST", user),
