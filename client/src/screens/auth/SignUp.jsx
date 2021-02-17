@@ -22,9 +22,9 @@ export default function SignUp() {
   const onSubmit = async (data) => {
     setLoading(true);
     try {
-      const results = await register(data);
+      await register(data);
     } catch (err) {
-      setApiError(err);
+      setApiError(err.message);
     }
     setLoading(false);
   };

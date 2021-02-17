@@ -1,50 +1,55 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
 import Spinner from "../components/spinner/Spinner";
-import { removeStoredAuthToken, storeAuthToken } from "../services/token";
+import {
+  getStoredAuthToken,
+  removeStoredAuthToken,
+  storeAuthToken,
+} from "../services/token";
 
 const auth = {};
 const AuthContext = React.createContext();
 
 function AuthProvider(props) {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
   const [loading, setLoading] = useState(true);
 
+  const initializeUser = async () => {
+    try {
+      const token = getStoredAuthToken();
+      if (token) {
+        const { user } = await api.auth.me();
+        setUser(user);
+      }
+    } catch (err) {
+      // token not valid, should check for refresh token
+      removeStoredAuthToken();
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
-    api.auth.me().then((res) => {
-      setUser(res.user);
-      setLoading(false);
-    });
+    initializeUser();
   }, []);
 
-  const login = React.useCallback((form) =>
-    //   api.auth.login(form).then((results) => {
-    //     const results = await api.auth.register(data);
-    // console.log({ results });
-    // if (results.token) {
-    //   storeAuthToken(results.token);
-    // }
-    // if (results.errors) {
-    //   setApiError(results.errors.message);
-    // }
-    // setLoading(false);
-    //     setUser(user);
-    //   }),
+  const login = React.useCallback(
+    async (form) => {
+      const { token, user } = await api.auth.login(form);
+      storeAuthToken(token);
+      setUser(user);
+    },
     [setUser]
   );
+
   const register = React.useCallback(
-    (form) =>
-      api.auth.register(form).then((results) => {
-        if (results.errors) {
-          return Promise.reject(results.errors[0].message);
-        }
-        if (results.token && results.user) {
-          storeAuthToken(results.token);
-          setUser(results.user);
-        }
-      }),
+    async (form) => {
+      const { token, user } = await api.auth.register(form);
+      storeAuthToken(token);
+      setUser(user);
+    },
     [setUser]
   );
+
   const logout = React.useCallback(() => {
     removeStoredAuthToken();
     setUser(null);

@@ -17,8 +17,13 @@ function callApi(url, method = "GET", data) {
     headers,
     body: JSON.stringify(data),
   })
-    .then((response) => response.json())
-    .then((json) => json);
+    .then((data) => data.json())
+    .then((response) => {
+      if (response.success === false) {
+        return Promise.reject(response);
+      }
+      return response;
+    });
 }
 
 export default {

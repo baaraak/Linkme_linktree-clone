@@ -1,4 +1,4 @@
-import { Link, Text, TextInputField } from "evergreen-ui";
+import { Alert, Link, Text, TextInputField } from "evergreen-ui";
 import { Link as RouterLink } from "react-router-dom";
 import React, { useState } from "react";
 import Joi from "joi";
@@ -7,13 +7,25 @@ import { useForm, Controller } from "react-hook-form";
 import { signinSchema } from "../../validations/auth.validation";
 import GoogleIcon from "../../assets/icons/Google";
 import Button from "../../components/button/Button";
+import { useAuth } from "../../context/auth.context";
 
 export default function SignIn() {
   const { control, handleSubmit, errors } = useForm({
     resolver: joiResolver(signinSchema),
   });
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState();
+  const { login } = useAuth();
 
-  const onSubmit = (data) => {};
+  const onSubmit = async (data) => {
+    setLoading(true);
+    try {
+      await login(data);
+    } catch (err) {
+      setApiError(err.message);
+    }
+    setLoading(false);
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="shadow-md">
@@ -23,6 +35,10 @@ export default function SignIn() {
       <div className="separator">
         <span>or</span>
       </div>
+
+      {!!apiError && (
+        <Alert intent="danger" marginBottom={15} title={apiError} />
+      )}
 
       <Controller
         name="email"
