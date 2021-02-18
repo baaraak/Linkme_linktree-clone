@@ -23,16 +23,6 @@
             grid-template-rows: max-content;
         }
 
-        .menu {
-            grid-column: 2 / 3;
-            grid-row: 1;
-        }
-
-
-        header {
-            grid-row: span 2;
-        }
-
         .preview {
             background: #f5f6f8;
             border-top: 1px solid rgb(218, 222, 224);
@@ -42,11 +32,6 @@
     @media only screen and (min-width: 992px) {
         & {
             grid-template-columns: 64px 1fr 435px;
-        }
-
-        .menu,
-        .toolbar {
-            height: 64px;
         }
     }
 

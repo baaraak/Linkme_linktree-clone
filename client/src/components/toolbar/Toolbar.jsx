@@ -9,7 +9,7 @@ export default function Toolbar() {
   return (
     <div className="toolbar">
       <Strong size={400}>My Linkme: </Strong>
-      <Link href="/" size={400} color="neutral">
+      <Link href="/" size={400} color="neutral" target="_blank">
         https://linkme.cc/baraki
       </Link>
       <Button>Share</Button>

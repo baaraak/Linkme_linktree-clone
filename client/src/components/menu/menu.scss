@@ -2,9 +2,10 @@
     height: 48px;
     display: flex;
     align-items: center;
+    justify-content: center;
     border: 1px solid rgb(218, 222, 224);
     border-width: 0 1px;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
 
     a {
         display: flex;
@@ -39,6 +40,23 @@
                 width: 100%;
                 background: #000;
             }
+        }
+    }
+
+
+
+    @media only screen and (min-width: 768px) {
+        & {
+            grid-column: 2 / 3;
+            grid-row: 1;
+            justify-content: start;
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
+        & {
+            height: 64px;
+            padding: 0 1.5rem;
         }
     }
 }

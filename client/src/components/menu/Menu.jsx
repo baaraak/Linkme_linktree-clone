@@ -7,7 +7,7 @@ export default function Menu() {
   const { pathname } = useLocation();
   return (
     <nav className="menu">
-      <Link to="/admin/" className={pathname === "/admin" ? "active" : ""}>
+      <Link to="/admin" className={pathname === "/admin" ? "active" : ""}>
         Links
       </Link>
       <Link

@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import LogoIcon from "../../assets/icons/Logo";
-import "./styles.scss";
+import "./logo.scss";
 
-const Logo = ({}) => {
+const Logo = ({ small = false, size = 50 }) => {
   return (
-    <a href="/" className="logo">
-      <LogoIcon width={50} height={50} />
-      <h1>Linkme</h1>
-    </a>
+    <Link to="/" className="logo">
+      <LogoIcon width={size} height={size} />
+      {!small && <h1>Linkme</h1>}
+    </Link>
   );
 };
 

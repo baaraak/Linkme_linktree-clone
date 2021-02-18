@@ -30,6 +30,9 @@ export default function DashboardScreen() {
         <Route path="/admin">
           <div className="page">page</div>
         </Route>
+        <Route path="*">
+          <Redirect to="/admin" />
+        </Route>
       </Switch>
       {width > MINIMUM_PREVIEW_WIDTH && <div className="preview">preview</div>}
     </div>
