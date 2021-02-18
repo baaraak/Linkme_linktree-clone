@@ -1,0 +1,17 @@
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+
+    .actions {
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+        >div  {
+            margin: .5rem 0;
+        }
+    }
+}
