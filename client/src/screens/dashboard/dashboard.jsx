@@ -10,8 +10,8 @@ export default function DashboardScreen() {
   return (
     <div className="dashboard">
       <header>header</header>
-      <div className="menu">menu</div>
       <div className="toolbar">toolbar</div>
+      <div className="menu">menu</div>
 
       <Switch>
         <Route path="/admin">

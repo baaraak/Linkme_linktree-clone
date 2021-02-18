@@ -1,29 +1,28 @@
 .dashboard {
     height: 100%;
-    display: grid;
-    grid-template-columns: 64px 1fr 570px;
-    grid-template-rows: min-content;
+    display: flex;
+    flex-direction: column;
 
     header {
-        
-        grid-row: span 2;
+        height: 48px;
     }
 
     .menu {
-        height: 64px;
-        border: 1px solid rgb(218, 222, 224);
-        border-width: 0 1px;
+        height: 48px;
+
     }
 
     .toolbar {
-        height: 64px;
-        
+        height: 48px;
+        border: 1px solid rgb(218, 222, 224);
+        border-width: 1px 0;
     }
 
     .page {
         background: #f5f6f8;
         border: 1px solid rgb(218, 222, 224);
         border-bottom: none;
+        flex: 1;
     }
 
     .preview {
@@ -31,45 +30,69 @@
         border-top: 1px solid rgb(218, 222, 224);
     }
 
-    // @media only screen and (max-width: 1260px) {
-    //     // .toolbar,
-    //     // .preview {
-    //     //     width: 570px;
-    //     // }
-    //     grid-template-columns: 64px 1fr 570px;
+    // header {
+    //     grid-row: span 2;
     // }
 
-    @media only screen and (max-width: 1260px) {
+    // .menu {
+    //     height: 64px;
+    //     border: 1px solid rgb(218, 222, 224);
+    //     border-width: 0 1px;
+    // }
+
+    // .toolbar {
+    //     height: 64px;
+
+    // }
+
+    // .page {
+    //     background: #f5f6f8;
+    //     border: 1px solid rgb(218, 222, 224);
+    //     border-bottom: none;
+    // }
+
+    // .preview {
+    //     background: #f5f6f8;
+    //     border-top: 1px solid rgb(218, 222, 224);
+    // }
+
+    @media only screen and (min-width: 768px) {
+        & {
+            display: grid;
+            grid-template-columns: 64px 1fr 300px;
+            grid-template-rows: min-content;
+        }
+
+        .menu {
+            grid-column: 2 / 3;
+            grid-row: 1;
+        }
+
+
+        header {
+            grid-row: span 2;
+        }
+
+        .preview {
+            background: #f5f6f8;
+            border-top: 1px solid rgb(218, 222, 224);
+        }
+    }
+
+    @media only screen and (min-width: 992px) {
         & {
             grid-template-columns: 64px 1fr 435px;
         }
+
+        .menu,
+        .toolbar {
+            height: 64px;
+        }
     }
 
-    @media only screen and (max-width: 992px) {
+    @media only screen and (min-width: 1260px) {
         & {
-            grid-template-columns: 64px 1fr 300px;
-        }
-
-        .menu {
-            height: 48px;
-        }
-    
-        .toolbar {
-            height: 48px;
-        }
-    }
-    
-    @media only screen and (max-width: 768px) {
-        & {
-            grid-template-columns: 64px 1fr 300px;
-        }
-
-        .menu {
-            height: 48px;
-        }
-    
-        .toolbar {
-            height: 48px;
+            grid-template-columns: 64px 1fr 570px;
         }
     }
 }
