@@ -3,7 +3,7 @@ import { useAuth } from "./context/auth.context";
 import Spinner from "./components/spinner/Spinner";
 
 const DashboardScreen = React.lazy(() =>
-  import("./screens/dashboard/dashboard")
+  import("./screens/dashboard/Dashboard")
 );
 const AuthScreen = React.lazy(() => import("./screens/auth"));
 

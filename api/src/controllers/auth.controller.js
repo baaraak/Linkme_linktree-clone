@@ -1,6 +1,5 @@
 const httpStatus = require("http-status");
 const User = require("../models/user.model");
-const PasswordResetToken = require("../models/passwordResetToken.model");
 const moment = require("moment-timezone");
 const { jwtExpirationInterval } = require("../config/constants");
 const { omit } = require("lodash");
@@ -19,7 +18,7 @@ exports.me = async (req, res, next) => {
 };
 
 /**
- * Returns jwt token if registration was successful
+ * Returns token and user if registration was successful
  */
 exports.register = async (req, res, next) => {
   try {
@@ -32,14 +31,11 @@ exports.register = async (req, res, next) => {
 };
 
 /**
- * Returns jwt token if valid username and password is provided
+ * Returns token and user if valid email and password is provided
  */
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log("***********************");
-    console.log({ email, password });
-    console.log("***********************");
     const user = await User.findOne({ email }).exec();
     if (user && (await user.passwordMatches(password))) {
       return res.json({ token: user.token(), user: user.transform() });

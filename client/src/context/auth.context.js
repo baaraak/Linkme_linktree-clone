@@ -7,7 +7,6 @@ import {
   storeAuthToken,
 } from "../services/token";
 
-const auth = {};
 const AuthContext = React.createContext();
 
 function AuthProvider(props) {

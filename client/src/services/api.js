@@ -34,10 +34,8 @@ export default {
     resetPassword: (user) => callApi("/auth/register", "POST", user),
     forgotPassword: (user) => callApi("/auth/register", "POST", user),
   },
-  users: {
-    get: () => callApi("/users"),
-    update: (id) => callApi("/users", "POST", id),
-    delete: (id) => callApi(`/users/${id}`, "DELETE"),
+  site: {
+    get: (userId) => callApi(`/site/${userId}`),
   },
   links: {
     create: () => callApi("/users"),

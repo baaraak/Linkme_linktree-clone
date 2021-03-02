@@ -18,7 +18,7 @@ export default function AuthScreen() {
         Connect audiences to all of your content with just one link{" "}
       </Text>
 
-      <div className="forms">
+      <div className="auth__forms">
         <Switch>
           <Route path="/signin">
             <SignIn />

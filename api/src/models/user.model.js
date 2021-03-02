@@ -11,9 +11,18 @@ const {
   jwtSecret,
   jwtExpirationInterval,
 } = require("../config/constants");
+const { generateUsername } = require("../utils/generateUsername");
+const Site = require("./site.model");
 
 const userSchema = new mongoose.Schema(
   {
+    username: {
+      type: String,
+      maxlength: 30,
+      index: true,
+      trim: true,
+      unique: true,
+    },
     email: {
       type: String,
       required: true,
@@ -31,19 +40,9 @@ const userSchema = new mongoose.Schema(
       minlength: 4,
       maxlength: 30,
     },
-    username: {
-      type: String,
-      maxlength: 30,
-      index: true,
-      trim: true,
-      unique: true,
-    },
+    site: { type: mongoose.Schema.Types.ObjectId, ref: "Site" },
     services: {
       google: String,
-    },
-    picture: {
-      type: String,
-      trim: true,
     },
   },
   {
@@ -61,6 +60,14 @@ userSchema.pre("save", async function save(next) {
     const hash = await bcrypt.hash(this.password, rounds);
     this.password = hash;
 
+    const site = new Site({
+      user: this._id,
+    });
+
+    const userSite = await site.save();
+
+    this.site = userSite._id;
+
     return next();
   } catch (error) {
     return next(error);
@@ -73,14 +80,7 @@ userSchema.pre("save", async function save(next) {
 userSchema.method({
   transform() {
     const transformed = {};
-    const fields = [
-      "id",
-      "fullName",
-      "username",
-      "email",
-      "picture",
-      "createdAt",
-    ];
+    const fields = ["id", "fullName", "email", "username", "createdAt"];
 
     fields.forEach((field) => {
       transformed[field] = this[field];
@@ -175,6 +175,7 @@ userSchema.statics = {
       if (!user.picture) user.picture = picture;
       return user.save();
     }
+    const username = generateUsername(email);
     const password = uuidv4();
     return this.create({
       services: { [service]: id },
