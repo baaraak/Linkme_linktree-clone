@@ -1,10 +1,10 @@
 .auth {
   background: #f5f6f8;
-  height: 100vh;
+  min-height: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 2rem 1rem 0;
+  padding: 2rem 0;
 
   .slogan {
     margin: 1rem 0 2rem 0;

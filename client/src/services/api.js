@@ -3,7 +3,7 @@ import { getStoredAuthToken } from "./token";
 const API_URL =
   process.env.NODE_ENV === "production"
     ? "https://---"
-    : "http://localhost:3001";
+    : "http://localhost:4000";
 
 function callApi(url, method = "GET", data) {
   const token = getStoredAuthToken();
