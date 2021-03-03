@@ -112,7 +112,7 @@ export default function SignUp() {
       <Button fullWidth isLoading={loading} appearance="primary">
         Create Account
       </Button>
-      <Link is={RouterLink} to="/signin" className="toggleLink">
+      <Link is={RouterLink} to="/auth/signin" className="toggleLink">
         Already have an account?
       </Link>
     </form>

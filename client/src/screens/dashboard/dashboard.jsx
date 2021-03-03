@@ -9,9 +9,14 @@ import Toolbar from "../../components/toolbar/Toolbar";
 import { SiteProvider } from "../../context/site.context";
 
 import "./dashboard.scss";
+import { useAuth } from "../../context/auth.context";
 
 export default function DashboardScreen() {
   const { width } = useWindowDimensions();
+  const { user } = useAuth();
+
+  // Un Authenticated users shouldn't see dashboard pages.
+  if (!user) return <Redirect to="/auth/signin" />;
   return (
     <SiteProvider>
       <div className="dashboard">

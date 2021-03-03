@@ -81,11 +81,11 @@ export default function SignIn() {
         color="neutral"
         className="resetPassword"
         size={300}
-        to="forgot-password"
+        to="/auth/forgot-password"
       >
         Forgot your password? Click to reset
       </Link>
-      <Link is={RouterLink} to="/signup" className="toggleLink">
+      <Link is={RouterLink} to="/auth/signup" className="toggleLink">
         Don't have an account?
       </Link>
     </form>
