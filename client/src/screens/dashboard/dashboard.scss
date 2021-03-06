@@ -1,43 +1,69 @@
 .dashboard {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 
+  .page {
+    background: #f5f6f8;
+    border: 1px solid rgb(218, 222, 224);
+    border-bottom: none;
+    flex: 1;
+  }
 
-    .page {
-        background: #f5f6f8;
-        border: 1px solid rgb(218, 222, 224);
-        border-bottom: none;
-        flex: 1;
+  .preview {
+    background: #f5f6f8;
+    border-top: 1px solid rgb(218, 222, 224);
+  }
+
+  @media only screen and (min-width: 768px) {
+    & {
+      display: grid;
+      grid-template-columns: 64px 1fr 300px;
+      grid-template-rows: max-content;
     }
 
     .preview {
-        background: #f5f6f8;
-        border-top: 1px solid rgb(218, 222, 224);
+      background: #f5f6f8;
+      border-top: 1px solid rgb(218, 222, 224);
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    & {
+      grid-template-columns: 64px 1fr 435px;
+    }
+  }
+
+  @media only screen and (min-width: 1260px) {
+    & {
+      grid-template-columns: 64px 1fr 570px;
+    }
+  }
+
+  .settings {
+    &__analytics {
+      background: #fff;
+      height: 64px;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #dadee0;
+      cursor: pointer;
+
+      .icon-chevron {
+        margin-left: auto;
+      }
     }
 
-    @media only screen and (min-width: 768px) {
-        & {
-            display: grid;
-            grid-template-columns: 64px 1fr 300px;
-            grid-template-rows: max-content;
-        }
-
-        .preview {
-            background: #f5f6f8;
-            border-top: 1px solid rgb(218, 222, 224);
-        }
+    section {
+      background: url("https://s27389.pcdn.co/wp-content/uploads/2020/09/why-problem-solving-analytics-needs-new-thinking.jpeg")
+        center center no-repeat;
+      background-size: cover;
+      height: 260px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-
-    @media only screen and (min-width: 992px) {
-        & {
-            grid-template-columns: 64px 1fr 435px;
-        }
-    }
-
-    @media only screen and (min-width: 1260px) {
-        & {
-            grid-template-columns: 64px 1fr 570px;
-        }
-    }
+  }
 }

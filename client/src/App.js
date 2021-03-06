@@ -3,9 +3,7 @@ import { useAuth } from "./context/auth.context";
 import Spinner from "./components/spinner/Spinner";
 import { Route, Switch } from "react-router-dom";
 
-const DashboardScreen = React.lazy(() =>
-  import("./screens/dashboard/Dashboard")
-);
+const DashboardScreen = React.lazy(() => import("./screens/dashboard"));
 const AuthScreen = React.lazy(() => import("./screens/auth"));
 
 function App() {

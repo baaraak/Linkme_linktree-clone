@@ -35,7 +35,10 @@ export default {
     forgotPassword: (user) => callApi("/auth/register", "POST", user),
   },
   site: {
-    get: (userId) => callApi(`/site/${userId}`),
+    get: (id) => callApi(`/site/${id}`),
+  },
+  user: {
+    site: (id) => callApi(`/site/${id}`),
   },
   links: {
     create: () => callApi("/users"),

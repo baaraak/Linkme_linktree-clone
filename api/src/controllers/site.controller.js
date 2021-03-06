@@ -1,18 +1,21 @@
 const httpStatus = require("http-status");
 const { omit } = require("lodash");
-const User = require("../models/user.model");
+const Site = require("../models/site.model");
 
 /**
- * Create new site (when new user created)
+ * Load site and append to req.
  */
-exports.create = async (req, res, next) => {
+exports.load = async (req, res, next, id) => {
   try {
-    const { username, ...rest } = req.body;
-    const user = new User(rest);
-    const savedUser = await user.save();
-    res.status(httpStatus.CREATED);
-    res.json(savedUser.transform());
+    const site = await Site.findById(id);
+    req.site = site;
+    return next();
   } catch (error) {
-    next(User.checkDuplicates(error));
+    return next(error);
   }
 };
+
+/**
+ * Get site information
+ */
+exports.get = (req, res) => res.json({ site: req.site });
