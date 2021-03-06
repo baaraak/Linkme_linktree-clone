@@ -1,0 +1,26 @@
+.analytics {
+  &__toggle {
+    background: #fff;
+    height: 64px;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dadee0;
+    cursor: pointer;
+
+    .icon-chevron {
+      margin-left: auto;
+    }
+  }
+
+  &__collapse {
+    background: url("https://s27389.pcdn.co/wp-content/uploads/2020/09/why-problem-solving-analytics-needs-new-thinking.jpeg")
+      center center no-repeat;
+    background-size: cover;
+    height: 260px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

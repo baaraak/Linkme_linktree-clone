@@ -12,9 +12,9 @@ import "./dashboard.scss";
 import { useAuth } from "../../context/auth.context";
 import Spinner from "../../components/spinner/Spinner";
 
-const Settings = React.lazy(() => import("./Settings"));
-const Links = React.lazy(() => import("./Links"));
-const Appearance = React.lazy(() => import("./Appearance"));
+const Links = React.lazy(() => import("../links/Links"));
+const Settings = React.lazy(() => import("../settings/Settings"));
+const Appearance = React.lazy(() => import("../appearance/Appearance"));
 
 export default function DashboardScreen() {
   const { width } = useWindowDimensions();
@@ -31,6 +31,9 @@ export default function DashboardScreen() {
         <SiteProvider>
           <React.Suspense fallback={<Spinner />}>
             <Switch>
+              <Route path="/admin">
+                <Links />
+              </Route>
               <Route path="/admin/settings">
                 <Settings />
               </Route>
@@ -38,9 +41,7 @@ export default function DashboardScreen() {
                 <Appearance />
               </Route>
               <Route path="/admin/pro">pro</Route>
-              <Route path="/admin">
-                <Links />
-              </Route>
+
               <Route path="*">
                 <Redirect to="/admin" />
               </Route>

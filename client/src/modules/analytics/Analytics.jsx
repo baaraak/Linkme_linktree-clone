@@ -10,19 +10,20 @@ import {
 import React from "react";
 import useCollapse from "react-collapsed";
 
-export default function Links() {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+import "./styles.scss";
 
+const Analytics = () => {
+  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
   return (
-    <div className="settings">
-      <div className="settings__analytics" {...getToggleProps()}>
-        <Strong size="400" color="black" marginRight={20}>
+    <div className="analytics">
+      <div className="analytics__toggle" {...getToggleProps()}>
+        <Strong size={400} color="black" marginRight={20}>
           Lifetime Analytics:
         </Strong>
-        <Text size="400" color="black" marginRight={30}>
+        <Text size={400} color="black" marginRight={30}>
           Views: 3012
         </Text>
-        <Text size="400" color="black" marginRight={30}>
+        <Text size={400} color="black" marginRight={30}>
           Clicks: 25
         </Text>
         <div className="icon-help">
@@ -36,9 +37,11 @@ export default function Links() {
           )}
         </div>
       </div>
-      <section {...getCollapseProps()}>
+      <section className="analytics__collapse" {...getCollapseProps()}>
         <Button>GO PROP</Button>
       </section>
     </div>
   );
-}
+};
+
+export default Analytics;

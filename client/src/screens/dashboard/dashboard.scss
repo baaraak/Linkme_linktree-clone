@@ -8,6 +8,11 @@
     border: 1px solid rgb(218, 222, 224);
     border-bottom: none;
     flex: 1;
+
+    &__container {
+      max-width: 670px;
+      margin: 0 auto;
+    }
   }
 
   .preview {
@@ -40,30 +45,16 @@
     }
   }
 
+  // Settings page
   .settings {
-    &__analytics {
-      background: #fff;
-      height: 64px;
-      padding: 0 1.5rem;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #dadee0;
-      cursor: pointer;
-
-      .icon-chevron {
-        margin-left: auto;
-      }
+    .links {
+      margin: 3rem 0;
     }
-
-    section {
-      background: url("https://s27389.pcdn.co/wp-content/uploads/2020/09/why-problem-solving-analytics-needs-new-thinking.jpeg")
-        center center no-repeat;
-      background-size: cover;
-      height: 260px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .link__empty {
+      font-size: 1.4rem;
+      font-weight: 300;
+      line-height: 3rem;
+      text-align: center;
     }
   }
 }

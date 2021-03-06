@@ -40,9 +40,9 @@ export default {
   user: {
     site: (id) => callApi(`/site/${id}`),
   },
-  links: {
-    create: () => callApi("/users"),
-    update: () => callApi("/users"),
-    delete: () => callApi("/users"),
+  link: {
+    create: () => callApi("/link", "POST"),
+    update: () => callApi("/link"),
+    delete: () => callApi("/link"),
   },
 };

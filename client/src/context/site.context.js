@@ -7,6 +7,7 @@ import {
   removeStoredAuthToken,
   storeAuthToken,
 } from "../services/token";
+import { toaster } from "evergreen-ui";
 
 const AuthContext = React.createContext();
 
@@ -18,9 +19,12 @@ function SiteProvider(props) {
   const getUserSite = async () => {
     try {
       const { site } = await api.site.get(user.site);
-      setData(data);
+      setData(site);
     } catch (err) {
+      console.log("***********************");
       console.log(err);
+      console.log("***********************");
+      toaster.danger(err.message);
     }
     setLoading(false);
   };
@@ -38,26 +42,17 @@ function SiteProvider(props) {
     [setData]
   );
 
-  const register = React.useCallback(
-    async (form) => {
-      const { token, user } = await api.auth.register(form);
-      storeAuthToken(token);
-      setData(user);
-    },
-    [setData]
-  );
+  const create = React.useCallback(async () => {
+    const { link } = await api.link.create();
+    setData((l) => l.concat(link));
+  }, [setData]);
 
   const logout = React.useCallback(() => {
     removeStoredAuthToken();
     setData(null);
   }, [setData]);
 
-  const value = React.useMemo(() => ({ user, login, logout, register }), [
-    login,
-    logout,
-    register,
-    user,
-  ]);
+  const value = React.useMemo(() => ({ data, create }), [data, create]);
 
   if (loading) {
     return <Spinner />;
