@@ -91,7 +91,7 @@ userSchema.method({
 
   token() {
     const playload = {
-      exp: moment().add(jwtExpirationInterval, "minutes").unix(),
+      exp: moment().add("48", "hours").unix(),
       iat: moment().unix(),
       id: this._id,
     };

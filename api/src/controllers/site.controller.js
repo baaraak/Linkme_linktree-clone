@@ -7,7 +7,7 @@ const Site = require("../models/site.model");
  */
 exports.load = async (req, res, next, id) => {
   try {
-    const site = await Site.findById(id);
+    const site = await Site.findById(id).populate("links");
     req.site = site;
     return next();
   } catch (error) {

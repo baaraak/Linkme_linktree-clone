@@ -31,9 +31,6 @@ export default function DashboardScreen() {
         <SiteProvider>
           <React.Suspense fallback={<Spinner />}>
             <Switch>
-              <Route path="/admin">
-                <Links />
-              </Route>
               <Route path="/admin/settings">
                 <Settings />
               </Route>
@@ -41,7 +38,9 @@ export default function DashboardScreen() {
                 <Appearance />
               </Route>
               <Route path="/admin/pro">pro</Route>
-
+              <Route path="/admin">
+                <Links />
+              </Route>
               <Route path="*">
                 <Redirect to="/admin" />
               </Route>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import api from "../services/api";
 import Spinner from "../components/spinner/Spinner";
 import { useAuth } from "./auth.context";
@@ -21,9 +21,6 @@ function SiteProvider(props) {
       const { site } = await api.site.get(user.site);
       setData(site);
     } catch (err) {
-      console.log("***********************");
-      console.log(err);
-      console.log("***********************");
       toaster.danger(err.message);
     }
     setLoading(false);
@@ -33,26 +30,14 @@ function SiteProvider(props) {
     getUserSite();
   }, []);
 
-  const login = React.useCallback(
-    async (form) => {
-      const { token, user } = await api.auth.login(form);
-      storeAuthToken(token);
-      setData(user);
+  const updateLinks = useCallback(
+    (links) => {
+      setData((d) => ({ ...d, links }));
     },
     [setData]
   );
 
-  const create = React.useCallback(async () => {
-    const { link } = await api.link.create();
-    setData((l) => l.concat(link));
-  }, [setData]);
-
-  const logout = React.useCallback(() => {
-    removeStoredAuthToken();
-    setData(null);
-  }, [setData]);
-
-  const value = React.useMemo(() => ({ data, create }), [data, create]);
+  const value = useMemo(() => ({ data, updateLinks }), [data, updateLinks]);
 
   if (loading) {
     return <Spinner />;

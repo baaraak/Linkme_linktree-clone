@@ -11,15 +11,7 @@ const {
 
 const router = express.Router();
 
-// Load user when API with userId route parameter is hit
-router.param("userId", controller.load);
-
 router
-  .route("/:userId")
-  /**
-   * @api {get} users/:id Get current user information
-   */
-  .get(authorize, controller.get)
   /**
    * @api {patch} users/:id Update some fields of a user document
    */

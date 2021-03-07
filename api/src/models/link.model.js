@@ -24,6 +24,7 @@ const linkSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     clicks: { type: Number, default: 0 },
   },
   {

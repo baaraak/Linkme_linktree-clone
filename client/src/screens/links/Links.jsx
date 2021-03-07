@@ -1,13 +1,11 @@
 import { Heading, Text } from "evergreen-ui";
 import Button from "../../components/button/Button";
-import { useSite } from "../../context/site.context";
-import Analytics from "../../modules/analytics/Analytics";
+import useLinks from "./useLinks";
+import Analytics from "../../components/analytics/Analytics";
+import Link from "../../components/link/Links";
 
 export default function Links() {
-  const {
-    data: { links },
-    create,
-  } = useSite();
+  const { links, create } = useLinks();
 
   return (
     <div className="settings">
@@ -23,8 +21,8 @@ export default function Links() {
           Add New Link
         </Button>
         <div className="links">
-          {links.length > 1 ? (
-            "links"
+          {links.length > 0 ? (
+            links.map((link) => <Link key={link._id} {...link} />)
           ) : (
             <div className="link__empty">
               You don't have any links to display.

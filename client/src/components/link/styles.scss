@@ -1,0 +1,37 @@
+.link {
+  background: #fff;
+  margin-bottom: 1rem;
+  height: 110px;
+  border-radius: 5px;
+  display: flex;
+  &__handle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    border-right: 1px solid #d7dce1;
+    cursor: move;
+    svg {
+      fill: #acb5bf;
+    }
+  }
+
+  &__content {
+    padding: 1rem;
+
+    .input svg {
+      color: #bec1c3;
+    }
+    input {
+      font-size: 0.8rem;
+      border: none;
+      outline: none;
+    }
+    .link__title {
+      input {
+        font-weight: bold;
+      }
+    }
+  }
+}

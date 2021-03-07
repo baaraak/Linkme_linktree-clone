@@ -1,4 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  createContext,
+  useCallback,
+  useEffect,
+  useState,
+  useMemo,
+  useContext,
+} from "react";
 import api from "../services/api";
 import Spinner from "../components/spinner/Spinner";
 import {
@@ -7,7 +14,7 @@ import {
   storeAuthToken,
 } from "../services/token";
 
-const AuthContext = React.createContext();
+const AuthContext = createContext();
 
 function AuthProvider(props) {
   const [user, setUser] = useState();
@@ -31,7 +38,7 @@ function AuthProvider(props) {
     initializeUser();
   }, []);
 
-  const login = React.useCallback(
+  const login = useCallback(
     async (form) => {
       const { token, user } = await api.auth.login(form);
       storeAuthToken(token);
@@ -40,7 +47,7 @@ function AuthProvider(props) {
     [setUser]
   );
 
-  const register = React.useCallback(
+  const register = useCallback(
     async (form) => {
       const { token, user } = await api.auth.register(form);
       storeAuthToken(token);
@@ -49,12 +56,12 @@ function AuthProvider(props) {
     [setUser]
   );
 
-  const logout = React.useCallback(() => {
+  const logout = useCallback(() => {
     removeStoredAuthToken();
     setUser(null);
   }, [setUser]);
 
-  const value = React.useMemo(() => ({ user, login, logout, register }), [
+  const value = useMemo(() => ({ user, login, logout, register }), [
     login,
     logout,
     register,
@@ -68,7 +75,7 @@ function AuthProvider(props) {
 }
 
 function useAuth() {
-  const context = React.useContext(AuthContext);
+  const context = useContext(AuthContext);
   if (context === undefined) {
     throw new Error(`useAuth must be used within a AuthProvider`);
   }

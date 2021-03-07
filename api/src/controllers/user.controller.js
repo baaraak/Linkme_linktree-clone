@@ -3,19 +3,6 @@ const { omit } = require("lodash");
 const User = require("../models/user.model");
 
 /**
- * Load user and append to req.
- */
-exports.load = async (req, res, next, id) => {
-  try {
-    const user = await User.get(id);
-    req.user = user;
-    return next();
-  } catch (error) {
-    return next(error);
-  }
-};
-
-/**
  * Get current logged in user
  */
 exports.get = (req, res) => res.json(req.user.transform());

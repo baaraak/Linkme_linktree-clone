@@ -10,6 +10,6 @@ router
   /**
    * @api {post} link/ Create new link
    */
-  .post(controller.create);
+  .post(authorize(), controller.create);
 
 module.exports = router;
