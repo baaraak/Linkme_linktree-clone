@@ -1,6 +1,5 @@
 {
-  "dependencies": {
-    "react-beautiful-dnd": "^13.0.0",
-    "react-query": "^3.12.0"
-  }
+  "name": "linkme",
+  "version": "0.0.1",
+  "dependencies": {}
 }
