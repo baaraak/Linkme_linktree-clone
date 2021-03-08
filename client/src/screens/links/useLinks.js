@@ -9,9 +9,17 @@ export default function useLinks() {
   } = useSite();
 
   const create = useCallback(async () => {
-    const { links } = await api.link.create();
-    updateLinks(links);
+    const results = await api.link.create();
+    updateLinks(results.links);
   }, [updateLinks]);
 
-  return { links, create };
+  const onDelete = useCallback(
+    async (id) => {
+      const results = await api.link.delete(id);
+      updateLinks(results.links);
+    },
+    [updateLinks]
+  );
+
+  return { links, create, onDelete };
 }

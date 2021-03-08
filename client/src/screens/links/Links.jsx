@@ -23,8 +23,7 @@ const reorder = (list, startIndex, endIndex) => {
 };
 
 export default function Links() {
-  const { links: data, create } = useLinks();
-  const [links, setLinks] = useState(data);
+  const { links, create, onDelete } = useLinks();
 
   const onDragEnd = (result) => {
     console.log({ result });
@@ -33,10 +32,12 @@ export default function Links() {
       return;
     }
 
-    const items = reorder(links, result.source.index, result.destination.index);
-
-    setLinks(items);
+    // const items = reorder(links, result.source.index, result.destination.index);
   };
+
+  console.log("***********************");
+  console.log(links);
+  console.log("***********************");
   return (
     <div className="settings">
       <Analytics />
@@ -68,6 +69,7 @@ export default function Links() {
                             key={link._id}
                             {...link}
                             provided={provided}
+                            onDelete={onDelete}
                             isDragging={snapshot.isDragging}
                           />
                         )}

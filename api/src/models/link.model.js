@@ -20,6 +20,7 @@ const linkSchema = new mongoose.Schema(
     },
     title: { type: String },
     href: { type: String },
+    index: { type: Number, default: 0 },
     active: {
       type: Boolean,
       default: false,

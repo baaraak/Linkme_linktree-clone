@@ -43,6 +43,6 @@ export default {
   link: {
     create: () => callApi("/link", "POST"),
     update: () => callApi("/link"),
-    delete: () => callApi("/link"),
+    delete: (id) => callApi(`/link/${id}`, "DELETE"),
   },
 };

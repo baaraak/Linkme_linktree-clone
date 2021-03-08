@@ -28,14 +28,7 @@ export default function SignIn() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="shadow-md">
-      <Button fullWidth iconBefore={GoogleIcon}>
-        Sign in with Google
-      </Button>
-      <div className="separator">
-        <span>or</span>
-      </div>
-
+    <form onSubmit={handleSubmit(onSubmit)}>
       {!!apiError && (
         <Alert intent="danger" marginBottom={15} title={apiError} />
       )}
@@ -47,6 +40,7 @@ export default function SignIn() {
         render={({ onChange, value }) => (
           <TextInputField
             label="Email"
+            inputHeight={40}
             isInvalid={!!errors.email}
             validationMessage={errors.email?.message}
             type="email"
@@ -64,6 +58,7 @@ export default function SignIn() {
         render={({ onChange, value }) => (
           <TextInputField
             label="Password"
+            inputHeight={40}
             isInvalid={!!errors.password}
             validationMessage={errors.password?.message}
             type="password"
@@ -73,19 +68,19 @@ export default function SignIn() {
           />
         )}
       />
-      <Button fullWidth type="submit" appearance="primary">
+      <Button fullWidth type="submit" appearance="primary" height={40}>
         Log in
       </Button>
       <Link
         is={RouterLink}
         color="neutral"
         className="resetPassword"
-        size={300}
+        size={400}
         to="/auth/forgot-password"
       >
         Forgot your password? Click to reset
       </Link>
-      <Link is={RouterLink} to="/auth/signup" className="toggleLink">
+      <Link is={RouterLink} to="/auth/signup" className="toggleLink" size={500}>
         Don't have an account?
       </Link>
     </form>

@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
 
   .slogan {
     margin: 1rem 0 2rem 0;
@@ -14,12 +14,8 @@
   &__forms {
     width: 26rem;
     max-width: 100%;
-
-    form {
-      background: #fff;
-      padding: 2rem;
-      width: 100%;
-    }
+    background: #fff;
+    padding: 2rem;
   }
 
   .separator {

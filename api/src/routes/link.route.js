@@ -12,4 +12,6 @@ router
    */
   .post(authorize(), controller.create);
 
+router.route("/:id").delete(authorize(), controller.delete);
+
 module.exports = router;

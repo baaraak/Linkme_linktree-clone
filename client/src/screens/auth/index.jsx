@@ -19,11 +19,17 @@ export default function AuthScreen() {
     <div className="auth">
       <Logo />
 
-      <Text className="slogan" color="muted" size={500}>
+      <Text className="slogan" color="muted" size={600}>
         Connect audiences to all of your content with just one link{" "}
       </Text>
 
-      <div className="auth__forms">
+      <div className="auth__forms shadow-md">
+        <Button fullWidth iconBefore={GoogleIcon} height={45}>
+          Continue with Google
+        </Button>
+        <div className="separator">
+          <span>or</span>
+        </div>
         <Route path="/auth/signin">
           <SignIn />
         </Route>

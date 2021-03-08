@@ -1,6 +1,51 @@
+.link-container {
+  margin-bottom: 1rem;
+
+  .link__message {
+    transform-origin: top;
+    opacity: 0;
+    transform: scaleY(0);
+    animation: enter 500ms forwards;
+    .title {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      padding: 0.3rem;
+      align-items: center;
+      .close {
+        position: absolute;
+        right: 10px;
+        font-size: 1.3rem;
+        top: 0;
+        opacity: 0.3;
+        transition: opacity 300ms;
+        cursor: pointer;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    .message {
+      background: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .delete-component {
+      .actions {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: 1rem;
+      }
+    }
+  }
+}
 .link {
   background: #fff;
-  margin-bottom: 1rem;
+
   height: 110px;
   border-radius: 5px;
   display: flex;
@@ -58,5 +103,12 @@
     .trash {
       margin-left: auto;
     }
+  }
+}
+
+@keyframes enter {
+  to {
+    opacity: 1;
+    transform: scaleY(1);
   }
 }

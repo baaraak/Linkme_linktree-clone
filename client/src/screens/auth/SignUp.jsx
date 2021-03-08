@@ -30,18 +30,10 @@ export default function SignUp() {
   };
 
   return (
-    <form className="shadow-md" onSubmit={handleSubmit(onSubmit)}>
-      <Button fullWidth iconBefore={GoogleIcon}>
-        Continue with Google
-      </Button>
-      <div className="separator">
-        <span>or</span>
-      </div>
-
+    <form onSubmit={handleSubmit(onSubmit)}>
       {!!apiError && (
         <Alert intent="danger" marginBottom={15} title={apiError} />
       )}
-
       <Controller
         name="username"
         control={control}
@@ -49,6 +41,7 @@ export default function SignUp() {
         render={({ onChange, value }) => (
           <TextInputField
             label="Username"
+            inputHeight={40}
             isInvalid={!!errors.username}
             validationMessage={errors.username?.message}
             type="text"
@@ -67,6 +60,7 @@ export default function SignUp() {
           <TextInputField
             label="Email"
             isInvalid={!!errors.email}
+            inputHeight={40}
             validationMessage={errors.email?.message}
             type="email"
             onChange={onChange}
@@ -84,6 +78,7 @@ export default function SignUp() {
           <TextInputField
             label="Full name"
             isInvalid={!!errors.fullName}
+            inputHeight={40}
             validationMessage={errors.fullName?.message}
             type="text"
             onChange={onChange}
@@ -101,6 +96,7 @@ export default function SignUp() {
           <TextInputField
             label="Password"
             isInvalid={!!errors.password}
+            inputHeight={40}
             validationMessage={errors.password?.message}
             type="password"
             placeholder="Password"
@@ -109,10 +105,10 @@ export default function SignUp() {
           />
         )}
       />
-      <Button fullWidth isLoading={loading} appearance="primary">
+      <Button fullWidth isLoading={loading} appearance="primary" height={40}>
         Create Account
       </Button>
-      <Link is={RouterLink} to="/auth/signin" className="toggleLink">
+      <Link is={RouterLink} to="/auth/signin" className="toggleLink" size={500}>
         Already have an account?
       </Link>
     </form>

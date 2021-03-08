@@ -7,7 +7,6 @@ const ResizableInput = (props) => {
   const text = useRef();
 
   useEffect(() => {
-    console.log(Math.max(text.current.getBoundingClientRect().width, 20) + 5);
     setWidth(Math.max(text.current.getBoundingClientRect().width, 20) + 10);
   }, [text, value]);
   return (
