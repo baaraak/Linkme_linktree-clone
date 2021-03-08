@@ -8,7 +8,9 @@ export default function Toolbar() {
   const { pathname } = useLocation();
   return (
     <div className="toolbar">
-      <Strong size={400}>My Linkme: </Strong>
+      <Strong size={400} color="black">
+        My Linkme:{" "}
+      </Strong>
       <Link href="/" size={400} color="neutral" target="_blank">
         https://linkme.cc/baraki
       </Link>

@@ -18,20 +18,45 @@
   }
 
   &__content {
-    padding: 1rem;
-
-    .input svg {
-      color: #bec1c3;
-    }
-    input {
-      font-size: 0.8rem;
-      border: none;
-      outline: none;
-    }
-    .link__title {
-      input {
-        font-weight: bold;
+    padding: 1rem 0 0.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: hidden;
+    .input {
+      display: flex;
+      svg {
+        color: #bec1c3;
       }
+      input {
+        border: none;
+        outline: none;
+      }
+      &.link__title {
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        input {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    margin-top: auto;
+    > div {
+      margin-right: 1rem;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity 300ms ease;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    .trash {
+      margin-left: auto;
     }
   }
 }

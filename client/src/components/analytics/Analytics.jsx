@@ -20,10 +20,10 @@ const Analytics = () => {
         <Strong size={400} color="black" marginRight={20}>
           Lifetime Analytics:
         </Strong>
-        <Text size={400} color="black" marginRight={30}>
+        <Text size={500} color="black" marginRight={30}>
           Views: 3012
         </Text>
-        <Text size={400} color="black" marginRight={30}>
+        <Text size={500} color="black" marginRight={30}>
           Clicks: 25
         </Text>
         <div className="icon-help">
