@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { useSite } from "../../context/site.context";
 import api from "../../services/api";
 
@@ -9,17 +9,29 @@ export default function useLinks() {
   } = useSite();
 
   const create = useCallback(async () => {
-    const results = await api.link.create();
-    updateLinks(results.links);
+    const { links } = await api.link.create();
+    updateLinks(links);
   }, [updateLinks]);
 
   const onDelete = useCallback(
     async (id) => {
-      const results = await api.link.delete(id);
-      updateLinks(results.links);
+      const { links } = await api.link.delete(id);
+      updateLinks(links);
     },
     [updateLinks]
   );
 
-  return { links, create, onDelete };
+  const reOrder = useCallback(
+    async (startIndex, endIndex) => {
+      const { links } = await api.link.reOrder(startIndex, endIndex);
+      // updateLinks(result);
+    },
+    [updateLinks]
+  );
+
+  const sortedLinks = useMemo(() => links.sort((a, b) => a.index - b.index), [
+    links,
+  ]);
+
+  return { links, create, onDelete, reOrder };
 }

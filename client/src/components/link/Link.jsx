@@ -5,6 +5,7 @@ import {
   MediaIcon,
   Strong,
   Text,
+  Tooltip,
   TrashIcon,
 } from "evergreen-ui";
 
@@ -111,19 +112,25 @@ const Link = ({
               className="thumbnails"
               onClick={() => setLinkMessage(Messages.THUMBNAIL)}
             >
-              <MediaIcon />
+              <Tooltip content="Add Thumbnail">
+                <MediaIcon />
+              </Tooltip>
             </div>
             <div
               className="analytic"
               onClick={() => setLinkMessage(Messages.ANALYTIC)}
             >
-              <GroupedBarChartIcon />
+              <Tooltip content="Analytics">
+                <GroupedBarChartIcon />
+              </Tooltip>
             </div>
             <div
               className="trash"
               onClick={() => setLinkMessage(Messages.DELETE)}
             >
-              <TrashIcon />
+              <Tooltip content="Delete">
+                <TrashIcon />
+              </Tooltip>
             </div>
           </div>
         </div>

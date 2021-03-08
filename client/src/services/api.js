@@ -43,6 +43,8 @@ export default {
   link: {
     create: () => callApi("/link", "POST"),
     update: () => callApi("/link"),
+    reOrder: (startIndex, endIndex) =>
+      callApi("/link/order", "PATCH", { startIndex, endIndex }),
     delete: (id) => callApi(`/link/${id}`, "DELETE"),
   },
 };

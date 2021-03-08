@@ -39,3 +39,13 @@ exports.delete = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * Re-Order links indexes
+ */
+exports.reOrder = async (req, res, next) => {
+  console.log("***********************");
+  console.log(req.body.startIndex);
+  console.log(req.body.endIndex);
+  console.log("***********************");
+};

@@ -6,38 +6,20 @@ import Link from "../../components/link/Link";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 
-// fake data generator
-const getItems = (count) =>
-  Array.from({ length: count }, (v, k) => k).map((k) => ({
-    id: `item-${k}`,
-    content: `item ${k}`,
-  }));
-
-// a little function to help us with reordering the result
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
-
 export default function Links() {
-  const { links, create, onDelete } = useLinks();
+  const { links, create, onDelete, reOrder } = useLinks();
 
-  const onDragEnd = (result) => {
-    console.log({ result });
+  const onDragEnd = ({ draggableId, destination, source }) => {
     // dropped outside the list
-    if (!result.destination) {
+    if (!draggableId || !destination || !source) {
       return;
     }
-
-    // const items = reorder(links, result.source.index, result.destination.index);
+    console.log("***********************");
+    console.log(links);
+    console.log("***********************");
+    reOrder(links[source.index].index, links[destination.index].index);
   };
 
-  console.log("***********************");
-  console.log(links);
-  console.log("***********************");
   return (
     <div className="settings">
       <Analytics />
