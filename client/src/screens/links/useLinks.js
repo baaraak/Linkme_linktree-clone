@@ -29,9 +29,17 @@ export default function useLinks() {
     [updateLinks]
   );
 
+  const update = useCallback(
+    async (id, data) => {
+      const { links } = await api.link.update(id, data);
+      updateLinks(links);
+    },
+    [updateLinks]
+  );
+
   const sortedLinks = useMemo(() => links.sort((a, b) => a.index - b.index), [
     links,
   ]);
 
-  return { links, create, onDelete, reOrder };
+  return { links, create, onDelete, reOrder, update };
 }

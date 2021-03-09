@@ -75,16 +75,15 @@ const Link = ({
   isDragging,
   clicks,
   onDelete,
+  onThumbnail,
+  onUpdate,
   _id,
 }) => {
   const [linkMessage, setLinkMessage] = useState();
 
-  const onThumbnail = (id) => {
-    console.log("***********************");
-    console.log("delete", id);
-    console.log("***********************");
+  const handleChange = (e) => {
+    onUpdate(_id, { [e.target.name]: e.target.value });
   };
-
   return (
     <div
       className={`link-container ${isDragging ? "shadow-2xl" : "shadow"}`}
@@ -99,11 +98,21 @@ const Link = ({
         </div>
         <div className="link__content">
           <div className="input link__title">
-            <ResizableInput placeholder="Enter title" />
+            <ResizableInput
+              onBlur={handleChange}
+              name="title"
+              defaultValue={title}
+              placeholder="Enter title"
+            />
             <EditIcon />
           </div>
           <div className="input link__href">
-            <ResizableInput placeholder="http://url" />
+            <ResizableInput
+              onBlur={handleChange}
+              placeholder="http://url"
+              defaultValue={href}
+              name="href"
+            />
 
             <EditIcon />
           </div>

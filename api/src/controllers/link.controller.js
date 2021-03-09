@@ -41,6 +41,24 @@ exports.delete = async (req, res, next) => {
 };
 
 /**
+ * Update Link
+ */
+exports.update = async (req, res, next) => {
+  try {
+    console.log("***********************");
+    console.log(req.body);
+    console.log("***********************");
+    const { id: _id } = req.params;
+    await Link.findOneAndUpdate({ _id }, { $set: req.body }).exec();
+    const links = await Link.find({ user: req.user._id });
+    res.status(httpStatus.OK);
+    res.json({ links });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
  * Re-Order links indexes
  */
 exports.reOrder = async (req, res, next) => {

@@ -7,7 +7,7 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useState } from "react";
 
 export default function Links() {
-  const { links, create, onDelete, reOrder } = useLinks();
+  const { links, create, onDelete, reOrder, update } = useLinks();
 
   const onDragEnd = ({ draggableId, destination, source }) => {
     // dropped outside the list
@@ -19,7 +19,7 @@ export default function Links() {
     console.log("***********************");
     reOrder(links[source.index].index, links[destination.index].index);
   };
-
+  console.log({ links });
   return (
     <div className="settings">
       <Analytics />
@@ -52,6 +52,7 @@ export default function Links() {
                             {...link}
                             provided={provided}
                             onDelete={onDelete}
+                            onUpdate={update}
                             isDragging={snapshot.isDragging}
                           />
                         )}
