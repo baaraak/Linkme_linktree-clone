@@ -13,11 +13,11 @@ router
    */
   .post(authorize(), controller.create);
 
+router.route("/order").patch(authorize(), validate(order), controller.reOrder);
+
 router
   .route("/:id")
   .patch(authorize(), validate(update), controller.update)
   .delete(authorize(), validate(_delete), controller.delete);
-
-router.route("/order").patch(authorize(), validate(order), controller.reOrder);
 
 module.exports = router;

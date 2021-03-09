@@ -62,8 +62,23 @@ exports.update = async (req, res, next) => {
  * Re-Order links indexes
  */
 exports.reOrder = async (req, res, next) => {
-  console.log("***********************");
-  console.log(req.body.startIndex);
-  console.log(req.body.endIndex);
-  console.log("***********************");
+  const { links } = req.body;
+  try {
+    for (let i = 0; i < links.length; i++) {
+      const link = links[i];
+
+      console.log("***********************");
+      console.log(link.title);
+      console.log(link.index);
+      console.log("***********************");
+      await Link.findOneAndUpdate(
+        { _id: link._id },
+        { $set: { index: link.index } }
+      );
+    }
+    const sortedLinks = await Link.find({ user: req.user._id });
+    res.json({ links: sortedLinks });
+  } catch (error) {
+    next(error);
+  }
 };

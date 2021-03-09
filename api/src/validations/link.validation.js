@@ -22,8 +22,7 @@ module.exports = {
   // PATCH /link/order
   order: {
     body: {
-      startIndex: Joi.number().min(0).max(128),
-      endIndex: Joi.number().min(0).max(128),
+      links: Joi.array().required(),
     },
   },
 };

@@ -22,9 +22,9 @@ export default function useLinks() {
   );
 
   const reOrder = useCallback(
-    async (startIndex, endIndex) => {
-      const { links } = await api.link.reOrder(startIndex, endIndex);
-      // updateLinks(result);
+    async (newSortedLinks) => {
+      updateLinks(newSortedLinks.links);
+      await api.link.reOrder(newSortedLinks);
     },
     [updateLinks]
   );
