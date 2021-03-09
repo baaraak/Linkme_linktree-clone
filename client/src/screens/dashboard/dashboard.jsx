@@ -11,6 +11,7 @@ import { SiteProvider } from "../../context/site.context";
 import "./dashboard.scss";
 import { useAuth } from "../../context/auth.context";
 import Spinner from "../../components/spinner/Spinner";
+import { Routes } from "../../routes";
 
 const Links = React.lazy(() => import("../links/Links"));
 const Settings = React.lazy(() => import("../settings/Settings"));
@@ -21,28 +22,28 @@ export default function DashboardScreen() {
   const { user } = useAuth();
 
   // Un Authenticated users shouldn't see dashboard pages.
-  if (!user) return <Redirect to="/auth/signin" />;
+  if (!user) return <Redirect to={Routes.Signin} />;
   return (
     <div className="dashboard">
       <Header />
-      <Toolbar />
+      <Toolbar username={user.username} />
       <Menu />
       <div className="page">
         <SiteProvider>
           <React.Suspense fallback={<Spinner />}>
             <Switch>
-              <Route path="/admin/settings">
+              <Route path={Routes.Settings}>
                 <Settings />
               </Route>
-              <Route path="/admin/appearance">
+              <Route path={Routes.Appearance}>
                 <Appearance />
               </Route>
-              <Route path="/admin/pro">pro</Route>
-              <Route path="/admin">
+              <Route path={Routes.Pro}>pro</Route>
+              <Route path={Routes.Dashboard}>
                 <Links />
               </Route>
               <Route path="*">
-                <Redirect to="/admin" />
+                <Redirect to={Routes.Dashboard} />
               </Route>
             </Switch>
           </React.Suspense>

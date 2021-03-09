@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth } from "./context/auth.context";
 import Spinner from "./components/spinner/Spinner";
 import { Route, Switch } from "react-router-dom";
+import { Routes } from "./routes";
 
 const DashboardScreen = React.lazy(() =>
   import("./screens/dashboard/dashboard")
@@ -13,13 +14,13 @@ function App() {
   return (
     <React.Suspense fallback={<Spinner />}>
       <Switch>
-        <Route path="/" exact>
+        <Route path={Routes.Home} exact>
           homepage
         </Route>
-        <Route path="/admin">
+        <Route path={Routes.Dashboard}>
           <DashboardScreen />
         </Route>
-        <Route path="/auth">
+        <Route path={Routes.Auth}>
           <AuthScreen />
         </Route>
         <Route path="*">404</Route>

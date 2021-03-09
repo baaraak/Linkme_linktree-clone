@@ -37,8 +37,8 @@ export default {
   site: {
     get: (id) => callApi(`/site/${id}`),
   },
-  user: {
-    site: (id) => callApi(`/site/${id}`),
+  users: {
+    site: (username) => callApi(`/users/${username}`),
   },
   link: {
     create: () => callApi("/link", "POST"),

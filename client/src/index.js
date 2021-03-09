@@ -7,17 +7,46 @@ import App from "./App";
 
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./context/auth.context";
+import { Routes } from "./routes";
+import api from "./services/api";
+import Site from "./screens/:username";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Router>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+async function init() {
+  const { pathname } = window.location;
+  const isApplicationRoute = Object.values(Routes).includes(pathname);
+
+  if (!isApplicationRoute) {
+    const { site } = await api.users.site(pathname.slice(1));
+    if (site) {
+      return renderUserSite(site);
+    }
+  }
+  renderApplication();
+}
+
+function renderUserSite(site) {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Site site={site} />
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+}
+
+function renderApplication() {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Router>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </Router>
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+}
+
+init();
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

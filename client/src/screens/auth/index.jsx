@@ -9,12 +9,13 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { Switch, Route, Redirect, useRouteMatch } from "react-router-dom";
 import { useAuth } from "../../context/auth.context";
+import { Routes } from "../../routes";
 
 export default function AuthScreen() {
   const { user } = useAuth();
 
   // Logged in users shouldn't see auth pages.
-  if (user) return <Redirect to="/admin" />;
+  if (user) return <Redirect to={Routes.Dashboard} />;
   return (
     <div className="auth">
       <Logo />
@@ -30,15 +31,15 @@ export default function AuthScreen() {
         <div className="separator">
           <span>or</span>
         </div>
-        <Route path="/auth/signin">
+        <Route path={Routes.Signin}>
           <SignIn />
         </Route>
-        <Route path="/auth/signup">
+        <Route path={Routes.Signup}>
           <SignUp />
         </Route>
-        <Route path="/auth/forgot-password">forgot password</Route>
+        <Route path={Routes.ForgotPassword}>forgot password</Route>
         <Route path="*">
-          <Redirect to="/auth/signin" />
+          <Redirect to={Routes.Signin} />
         </Route>
       </div>
     </div>

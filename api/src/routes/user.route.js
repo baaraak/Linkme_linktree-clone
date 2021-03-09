@@ -12,6 +12,7 @@ const {
 const router = express.Router();
 
 router
+  .route("/")
   /**
    * @api {patch} users/:id Update some fields of a user document
    */
@@ -20,5 +21,7 @@ router
    * @api {patch} users/:id Delete a user
    */
   .delete(authorize, controller.remove);
+
+router.route("/:username").get(controller.site);
 
 module.exports = router;

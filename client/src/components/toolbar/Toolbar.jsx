@@ -4,7 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 
 import "./toolbar.scss";
 
-export default function Toolbar() {
+export default function Toolbar({ username }) {
   const { pathname } = useLocation();
   return (
     <div className="toolbar">
@@ -12,7 +12,7 @@ export default function Toolbar() {
         My Linkme:{" "}
       </Strong>
       <Link href="/" size={400} color="neutral" target="_blank">
-        https://linkme.cc/baraki
+        https://linkme.cc/{username}
       </Link>
       <Button>Share</Button>
     </div>
