@@ -1,37 +1,36 @@
 .toolbar {
-    height: 48px;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
+  height: 48px;
+  min-height: 48px;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
 
-    strong {
-        margin-right: .3rem;
-        white-space: nowrap;
+  strong {
+    margin-right: 0.3rem;
+    white-space: nowrap;
+  }
+
+  a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 0.3rem;
+  }
+
+  button {
+    margin-left: auto;
+  }
+
+  @media only screen and (max-width: 768px) {
+    & {
+      border: 1px solid #dadee0;
+      border-width: 1px 0;
     }
+  }
 
-    a {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        padding-right: .3rem;
+  @media only screen and (min-width: 992px) {
+    & {
+      height: 64px;
+      padding: 0 1.5rem;
     }
-
-    button {
-        margin-left: auto;
-    }
-
-
-    @media only screen and (max-width: 768px) {
-        & {
-            border: 1px solid #dadee0;
-            border-width: 1px 0;
-        }
-    }
-
-    @media only screen and (min-width: 992px) {
-        & {
-            height: 64px;
-            padding: 0 1.5rem;
-        }
-    }
-
+  }
 }

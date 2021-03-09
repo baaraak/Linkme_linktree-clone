@@ -1,36 +1,38 @@
 header {
-    display: flex;
-    height: 48px;
-    padding: 0 1rem;
+  display: flex;
+  height: 48px;
+  padding: 0 1rem;
 
-    .actions {
+  .actions {
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+
+    > div {
+      margin-left: 1.5rem;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    & {
+      grid-row: span 2;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 0;
+
+      .actions {
+        margin: auto 0 0 0;
         display: flex;
-        margin-left: auto;
         align-items: center;
+        flex-direction: column;
 
         > div {
-            margin-left: 1.5rem;
+          margin: 1rem 0 0 0;
         }
+      }
     }
-
-    @media only screen and (min-width: 768px) {
-        & {
-            grid-row: span 2;
-            height: 100%;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 0;
-
-            .actions {
-                margin: auto 0 0 0;
-                display: flex;
-                align-items: center;
-                flex-direction: column;
-
-                >div {
-                    margin: 1rem 0 0 0;
-                }
-            }
-        }
-    }
+  }
 }
