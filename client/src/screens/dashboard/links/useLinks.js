@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useMemo } from "react";
-import { useSite } from "../../context/site.context";
-import api from "../../services/api";
+import { useSite } from "context/site.context";
+import api from "services/api";
 
 export default function useLinks() {
   const {

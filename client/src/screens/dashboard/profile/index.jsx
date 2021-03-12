@@ -9,8 +9,7 @@ import {
 import React from "react";
 import useCollapse from "react-collapsed";
 
-export default function Settings() {
-  const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+export default function Profile() {
 
-  return <div className="settings">settings</div>;
+  return <div className="Profile">Profile</div>;
 }

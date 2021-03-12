@@ -1,6 +1,6 @@
 import { Text } from "evergreen-ui";
 import React from "react";
-import Logo from "../../components/logo/Logo";
+import Logo from "components/logo/Logo";
 import "./auth-layout.scss";
 
 export default function AuthLayout(props) {

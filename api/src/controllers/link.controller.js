@@ -45,9 +45,6 @@ exports.delete = async (req, res, next) => {
  */
 exports.update = async (req, res, next) => {
   try {
-    console.log("***********************");
-    console.log(req.body);
-    console.log("***********************");
     const { id: _id } = req.params;
     await Link.findOneAndUpdate({ _id }, { $set: req.body }).exec();
     const links = await Link.find({ user: req.user._id });
@@ -66,11 +63,6 @@ exports.reOrder = async (req, res, next) => {
   try {
     for (let i = 0; i < links.length; i++) {
       const link = links[i];
-
-      console.log("***********************");
-      console.log(link.title);
-      console.log(link.index);
-      console.log("***********************");
       await Link.findOneAndUpdate(
         { _id: link._id },
         { $set: { index: link.index } }

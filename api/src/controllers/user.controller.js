@@ -28,10 +28,7 @@ exports.create = async (req, res, next) => {
 exports.update = (req, res, next) => {
   const user = Object.assign(req.user, req.body);
 
-  user
-    .save()
-    .then((savedUser) => res.json(savedUser.transform()))
-    .catch((e) => next(User.checkDuplicates(e)));
+  user.save().then((savedUser) => res.json({ user: savedUser.transform() }));
 };
 
 /**

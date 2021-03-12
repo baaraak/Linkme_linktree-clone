@@ -1,19 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import {
+  Menu,
   Avatar,
+  UserIcon,
+  CogIcon,
+  StarEmptyIcon,
   HelpIcon,
+  LogOutIcon,
   MenuIcon,
   Pane,
   Popover,
   Position,
 } from "evergreen-ui";
-import Logo from "../logo/Logo";
+import Logo from "components/logo/Logo";
 
-import useWindowDimensions from "../../hooks/useWindowDimensions";
+import useWindowDimensions from "hooks/useWindowDimensions";
+import { Routes } from "routes";
 
 import "./header.scss";
 
-export default function Header() {
+export default function Header({ username, avatar, onLogout }) {
   const { width } = useWindowDimensions();
   const isMobile = width < 768;
   return (
@@ -23,41 +30,45 @@ export default function Header() {
       <div className="actions">
         <Popover
           content={
-            <Pane
-              width={240}
-              height={240}
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              flexDirection="column"
-            >
-              <div>PopoverContent help</div>
+            <Pane display="flex" justifyContent="center" flexDirection="column">
+              <Menu>
+                <Menu.Group title="SUPPORT">
+                  <Menu.Item icon={CogIcon}>Help Topics</Menu.Item>
+                  <Menu.Item icon={StarEmptyIcon}>Get Started</Menu.Item>
+                  <Menu.Item icon={HelpIcon}>Ask A Question</Menu.Item>
+                </Menu.Group>
+              </Menu>
             </Pane>
           }
         >
-          <HelpIcon size={28} color="disabled" />
+          <div>
+            <HelpIcon size={28} color="disabled" />
+          </div>
         </Popover>
 
         <div className="avatar">
           <Popover
             content={
               <Pane
-                width={240}
-                height={240}
                 display="flex"
-                alignItems="center"
                 justifyContent="center"
                 flexDirection="column"
               >
-                <div>PopoverContent Avatar</div>
+                <Menu>
+                  <Menu.Group title={username.toUpperCase()}>
+                    <Menu.Item is={Link} to={Routes.Profile} icon={UserIcon}>
+                      My Account
+                    </Menu.Item>
+                    <Menu.Item onClick={onLogout} icon={LogOutIcon}>
+                      Logout
+                    </Menu.Item>
+                  </Menu.Group>
+                </Menu>
               </Pane>
             }
           >
             {!isMobile ? (
-              <Avatar
-                src="https://www.shareicon.net/data/256x256/2015/09/08/98071_man_512x512.png"
-                size={45}
-              />
+              <Avatar src={avatar} size={45} />
             ) : (
               <MenuIcon size={20} />
             )}
@@ -65,14 +76,5 @@ export default function Header() {
         </div>
       </div>
     </header>
-  );
-}
-
-function Desktop() {
-  return (
-    <Avatar
-      src="https://www.shareicon.net/data/256x256/2015/09/08/98071_man_512x512.png"
-      size={45}
-    />
   );
 }

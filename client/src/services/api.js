@@ -36,9 +36,11 @@ export default {
   },
   site: {
     get: (id) => callApi(`/site/${id}`),
+    update: (fields) => callApi(`/site`, "PATCH", fields),
   },
   users: {
     site: (username) => callApi(`/users/${username}`),
+    update: (fields) => callApi(`/users`, "PATCH", fields),
   },
   link: {
     create: () => callApi("/link", "POST"),

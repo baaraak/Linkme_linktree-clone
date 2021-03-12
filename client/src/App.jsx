@@ -1,16 +1,15 @@
 import React from "react";
 import { useAuth } from "./context/auth.context";
-import Spinner from "./components/spinner/Spinner";
+import Spinner from "components/spinner/Spinner";
 import { Route, Switch } from "react-router-dom";
 import { Routes } from "./routes";
 
-const DashboardScreen = React.lazy(() =>
-  import("./screens/dashboard/dashboard")
-);
+const DashboardScreen = React.lazy(() => import("./screens/dashboard"));
 const AuthScreen = React.lazy(() => import("./screens/auth"));
 
 function App() {
   const { user } = useAuth();
+
   return (
     <React.Suspense fallback={<Spinner />}>
       <Switch>

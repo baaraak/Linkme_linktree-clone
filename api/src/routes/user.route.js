@@ -14,13 +14,13 @@ const router = express.Router();
 router
   .route("/")
   /**
-   * @api {patch} users/:id Update some fields of a user document
+   * @api {patch} /users Update some fields of a user document
    */
-  .patch(authorize, validate(updateUser), controller.update)
+  .patch(authorize(), validate(updateUser), controller.update)
   /**
    * @api {patch} users/:id Delete a user
    */
-  .delete(authorize, controller.remove);
+  .delete(authorize(), controller.remove);
 
 router.route("/:username").get(controller.site);
 

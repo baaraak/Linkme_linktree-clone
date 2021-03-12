@@ -14,10 +14,6 @@ const {
 
 const siteSchema = new mongoose.Schema(
   {
-    profile: {
-      type: String,
-      default: "v28ave3worayhlv2kppe",
-    },
     background: { type: String, default: "v28ave3worayhlv2kppe" },
     theme: {
       type: String,
@@ -25,7 +21,6 @@ const siteSchema = new mongoose.Schema(
     },
     buttons: { type: String, default: "rounded" },
     fonts: { type: String, default: "Arial" },
-    sensitive: { type: Boolean, default: false },
     user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     links: [{ type: mongoose.Schema.Types.ObjectId, ref: "Link" }],
     views: { type: Number, default: 0 },

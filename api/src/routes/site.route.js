@@ -1,6 +1,8 @@
 const express = require("express");
+const validate = require("express-validation");
 const controller = require("../controllers/site.controller");
 const { authorize } = require("../middlewares/auth");
+const { update, getSite } = require("../validations/site.validation");
 
 const router = express.Router();
 
@@ -8,9 +10,16 @@ const router = express.Router();
 router.param("siteId", controller.load);
 
 router
+  .route("/")
+  /**
+   * @api {path} /site Update site
+   */
+  .patch(authorize(), validate(update), controller.update);
+
+router
   .route("/:siteId")
   /**
-   * @api {get} site/:id Get site data
+   * @api {get} /site Get site data
    */
   .get(controller.get);
 

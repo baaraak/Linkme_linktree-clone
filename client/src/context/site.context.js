@@ -19,6 +19,7 @@ function SiteProvider(props) {
   const getUserSite = async () => {
     try {
       const { site } = await api.site.get(user.site);
+
       setData(site);
     } catch (err) {
       toaster.danger(err.message);
@@ -30,6 +31,14 @@ function SiteProvider(props) {
     getUserSite();
   }, []);
 
+  const update = useCallback(
+    async (fields) => {
+      const { site } = await api.site.update(fields);
+      setData(site);
+    },
+    [setData]
+  );
+
   const updateLinks = useCallback(
     (links) => {
       setData((d) => ({ ...d, links }));
@@ -37,7 +46,11 @@ function SiteProvider(props) {
     [setData]
   );
 
-  const value = useMemo(() => ({ data, updateLinks }), [data, updateLinks]);
+  const value = useMemo(() => ({ data, updateLinks, update }), [
+    data,
+    updateLinks,
+    update,
+  ]);
 
   if (loading) {
     return <Spinner />;

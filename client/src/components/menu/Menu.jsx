@@ -17,10 +17,10 @@ export default function Menu() {
         Appearance
       </Link>
       <Link
-        to="/admin/settings"
-        className={pathname === "/admin/settings" ? "active" : ""}
+        to="/admin/profile"
+        className={pathname === "/admin/profile" ? "active" : ""}
       >
-        Settings
+        Profile
       </Link>
       <Link
         to="/admin/pro"

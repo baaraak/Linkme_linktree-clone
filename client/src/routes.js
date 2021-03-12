@@ -2,11 +2,10 @@ export const Routes = {
   Home: "/",
   Auth: "/auth",
   Signin: "/auth/signin",
-  Signin: "/auth/signup",
+  Signup: "/auth/signup",
   ForgotPassword: "/auth/forgot-password",
   Dashboard: "/admin",
-  Settings: "/admin/settings",
+  Profile: "/admin/profile",
   Appearance: "/admin/appearance",
-  Settings: "/admin/settings",
   Pro: "/admin/pro",
 };

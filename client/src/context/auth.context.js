@@ -58,13 +58,22 @@ function AuthProvider(props) {
 
   const logout = useCallback(() => {
     removeStoredAuthToken();
-    setUser(null);
+    window.location.reload();
   }, [setUser]);
 
-  const value = useMemo(() => ({ user, login, logout, register }), [
+  const update = useCallback(
+    async (fields) => {
+      const { user } = await api.users.update(fields);
+      setUser(user);
+    },
+    [setUser]
+  );
+
+  const value = useMemo(() => ({ user, login, logout, register, update }), [
     login,
     logout,
     register,
+    update,
     user,
   ]);
 

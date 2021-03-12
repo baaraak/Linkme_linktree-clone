@@ -19,3 +19,17 @@ exports.load = async (req, res, next, id) => {
  * Get site information
  */
 exports.get = (req, res) => res.json({ site: req.site });
+
+/**
+ * Update site
+ */
+exports.update = async (req, res, next) => {
+  try {
+    const site = await Site.findOne({ user: req.user._id }).populate("links");
+    const newSite = Object.assign(site, req.body);
+    await newSite.save();
+    return res.json({ site: newSite });
+  } catch (error) {
+    return next(error);
+  }
+};

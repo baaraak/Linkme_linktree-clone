@@ -1,9 +1,9 @@
 import { Heading, Text } from "evergreen-ui";
-import Button from "../../components/button/Button";
+import Button from "components/button/Button";
 import useLinks from "./useLinks";
-import Analytics from "../../components/analytics/Analytics";
-import Link from "../../components/link/Link";
-import { reorder } from "../../services/utils";
+import Analytics from "components/analytics/Analytics";
+import Link from "components/link/Link";
+import { reorder } from "services/utils";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { useMemo, useState } from "react";
 

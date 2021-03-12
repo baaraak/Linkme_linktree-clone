@@ -1,0 +1,131 @@
+.dashboard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .page {
+    background: #f5f6f8;
+    border: 1px solid rgb(218, 222, 224);
+    border-width: 0 1px;
+    flex: 1;
+
+    &__container {
+      max-width: 670px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+  }
+
+  .preview {
+    background: #f5f6f8;
+    border-top: 1px solid rgb(218, 222, 224);
+  }
+
+  @media only screen and (min-width: 768px) {
+    & {
+      display: grid;
+      grid-template-columns: 64px 1fr 300px;
+      grid-template-rows: max-content;
+    }
+
+    .preview {
+      background: #f5f6f8;
+      border-top: 1px solid rgb(218, 222, 224);
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    & {
+      grid-template-columns: 64px 1fr 435px;
+    }
+  }
+
+  @media only screen and (min-width: 1260px) {
+    & {
+      grid-template-columns: 64px 1fr 570px;
+    }
+  }
+}
+
+// Settings page
+.settings {
+  .links {
+    margin: 3rem 0;
+  }
+  .link__empty {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 3rem;
+    text-align: center;
+  }
+}
+
+// Appearance page
+.appearance {
+  margin-top: 2.5rem;
+
+  .box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 7px;
+    margin-bottom: 3rem;
+
+    &__title {
+      margin: 3rem 0 1rem;
+      color: #000;
+      display: block;
+    }
+  }
+
+  .profile section {
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: auto 1fr 1fr;
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .backgrounds,
+  .themes {
+    .box {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-gap: 2rem;
+    }
+    .box-item {
+      cursor: pointer;
+
+      &--selected .box-item__thumbnail {
+        box-shadow: 0 0 0 4px #fff, 0 0 0 6px #aeaeae;
+      }
+      &__thumbnail {
+        height: 190px;
+        border-radius: 7px;
+        overflow: hidden;
+        display: flex;
+      }
+      img {
+        width: 100%;
+        // object-fit: cover;
+      }
+
+      span {
+        display: block;
+        text-align: center;
+        margin-top: 0.5rem;
+        color: #000;
+      }
+
+      &--custom .box-item__thumbnail {
+        border: 1px dashed #999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+  }
+}
