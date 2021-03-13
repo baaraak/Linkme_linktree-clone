@@ -13,6 +13,7 @@ export const reorder = (list, startIndex, endIndex) => {
   return result.map((l, i) => ({ ...l, index: i }));
 };
 
+// Load external scripts url
 export const loadScript = (src) => {
   return new Promise(function (resolve, reject) {
     const s = document.createElement("script");
@@ -33,4 +34,17 @@ export const loadScript = (src) => {
     const t = document.getElementsByTagName("script")[0];
     t.parentElement.insertBefore(s, t);
   });
+};
+
+// Copy text input to user clipboard
+export const copyToClipboard = (text) => {
+  const el = document.createElement("input");
+  el.value = text;
+  el.setAttribute("readonly", "");
+  el.style.position = "absolute";
+  el.style.left = "-9999px";
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand("copy");
+  document.body.removeChild(el);
 };

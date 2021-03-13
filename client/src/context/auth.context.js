@@ -63,19 +63,21 @@ function AuthProvider(props) {
 
   const update = useCallback(
     async (fields) => {
-      const { user } = await api.users.update(fields);
+      const { user } = await api.user.update(fields);
       setUser(user);
     },
     [setUser]
   );
 
-  const value = useMemo(() => ({ user, login, logout, register, update }), [
-    login,
-    logout,
-    register,
-    update,
-    user,
-  ]);
+  const _delete = useCallback(async () => {
+    await api.user.delete();
+    logout();
+  }, [setUser]);
+
+  const value = useMemo(
+    () => ({ user, login, logout, register, update, _delete }),
+    [login, logout, register, update, _delete, user]
+  );
 
   if (loading) {
     return <Spinner />;

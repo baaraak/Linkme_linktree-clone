@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { loadScript } from "./utils";
+
 export const CLOUD_NAME = "djyerevgr";
 
 export const Cloudinary = {
@@ -9,4 +12,22 @@ export const Cloudinary = {
     multiple: false,
     resourceType: "image",
   },
+};
+
+export const useCloudinaryWidget = (callback) => {
+  const [widget, setWidget] = useState();
+
+  const initUploaderWidget = async () => {
+    await loadScript(Cloudinary.widget_script);
+
+    setWidget(
+      window.cloudinary.createUploadWidget(Cloudinary.options, callback)
+    );
+  };
+
+  useEffect(() => {
+    initUploaderWidget();
+  }, []);
+
+  return { widget };
 };

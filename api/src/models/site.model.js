@@ -14,7 +14,7 @@ const {
 
 const siteSchema = new mongoose.Schema(
   {
-    background: { type: String, default: "v28ave3worayhlv2kppe" },
+    background: { type: String, default: "flowers" },
     theme: {
       type: String,
       default: "basic",

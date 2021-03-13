@@ -1,5 +1,6 @@
 const httpStatus = require("http-status");
 const { omit } = require("lodash");
+const Link = require("../models/link.model");
 const Site = require("../models/site.model");
 const User = require("../models/user.model");
 
@@ -34,13 +35,18 @@ exports.update = (req, res, next) => {
 /**
  * Delete user
  */
-exports.remove = (req, res, next) => {
-  const { user } = req.locals;
-
-  user
-    .remove()
-    .then(() => res.status(httpStatus.NOT_FOUND).json())
-    .catch((e) => next(e));
+exports.remove = async (req, res, next) => {
+  try {
+    // remove site
+    await Site.remove({ user: req.user._id });
+    // remove links
+    await Link.remove({ user: req.user.id });
+    // remove the user
+    await req.user.remove();
+    res.json({ success: true });
+  } catch (error) {
+    next(error);
+  }
 };
 
 /**
@@ -51,10 +57,9 @@ exports.site = async (req, res, next) => {
   try {
     const user = await User.findOne({ username });
     if (!user) return res.status(httpStatus.NOT_FOUND).json({ success: false });
-    const site = await Site.findById(user.site).populate("links");
-    console.log("***********************");
-    console.log(site);
-    console.log("***********************");
+    const site = await Site.findById(user.site)
+      .populate("links")
+      .populate("user", "-password");
     res.json({ site });
   } catch (error) {
     next(error);

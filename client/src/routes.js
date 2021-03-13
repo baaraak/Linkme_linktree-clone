@@ -5,7 +5,7 @@ export const Routes = {
   Signup: "/auth/signup",
   ForgotPassword: "/auth/forgot-password",
   Dashboard: "/admin",
-  Profile: "/admin/profile",
+  Account: "/admin/account",
   Appearance: "/admin/appearance",
   Pro: "/admin/pro",
 };

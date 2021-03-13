@@ -14,6 +14,7 @@ module.exports = {
   updateUser: {
     body: {
       email: Joi.string().email(),
+      fullName: Joi.string().min(4),
       password: Joi.string().min(6).max(128),
       name: Joi.string().max(128),
       avatar: Joi.string().max(128).allow(""),

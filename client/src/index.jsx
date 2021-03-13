@@ -16,7 +16,7 @@ async function init() {
   const isApplicationRoute = Object.values(Routes).includes(pathname);
 
   if (!isApplicationRoute) {
-    const { site } = await api.users.site(pathname.slice(1));
+    const { site } = await api.user.site(pathname.slice(1));
     if (site) {
       return renderUserSite(site);
     }

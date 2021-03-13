@@ -20,8 +20,8 @@ export default function Appearance() {
         bio={user.bio}
       />
       <Background background={site.background} onChange={updateSite} />
+      <Buttons />
       {/* <Themes />
-      {/* <Buttons />
       {/* <Fonts />*/}
     </div>
   );

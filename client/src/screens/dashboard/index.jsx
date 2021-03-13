@@ -14,7 +14,7 @@ import Spinner from "components/spinner/Spinner";
 import { Routes } from "routes";
 
 const Links = React.lazy(() => import("./links"));
-const Profile = React.lazy(() => import("./profile"));
+const Account = React.lazy(() => import("./account"));
 const Appearance = React.lazy(() => import("./appearance"));
 
 export default function DashboardScreen() {
@@ -32,8 +32,8 @@ export default function DashboardScreen() {
         <SiteProvider>
           <React.Suspense fallback={<Spinner />}>
             <Switch>
-              <Route path={Routes.Profile}>
-                <Profile />
+              <Route path={Routes.Account}>
+                <Account />
               </Route>
               <Route path={Routes.Appearance}>
                 <Appearance />

@@ -4,7 +4,7 @@ import { useForm, Controller } from "react-hook-form";
 import { Text, TextInputField, Link, Alert } from "evergreen-ui";
 import { Link as RouterLink } from "react-router-dom";
 import React, { useState } from "react";
-import { signupSchema } from "validations/auth.validation";
+import { signupSchema } from "services/validations";
 import Button from "components/button/Button";
 import api from "services/api";
 import { storeAuthToken } from "services/token";

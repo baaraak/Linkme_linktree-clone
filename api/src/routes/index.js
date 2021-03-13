@@ -11,7 +11,7 @@ const router = express.Router();
  */
 router.get("/status", (req, res) => res.send("OK"));
 
-router.use("/users", userRoutes);
+router.use("/user", userRoutes);
 router.use("/auth", authRoutes);
 router.use("/site", siteRoutes);
 router.use("/link", linkRoutes);

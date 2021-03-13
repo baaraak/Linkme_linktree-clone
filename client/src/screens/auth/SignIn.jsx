@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Joi from "joi";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { useForm, Controller } from "react-hook-form";
-import { signinSchema } from "validations/auth.validation";
+import { signinSchema } from "services/validations";
 import GoogleIcon from "icons/Google";
 import Button from "components/button/Button";
 import { useAuth } from "context/auth.context";
@@ -43,9 +43,9 @@ export default function SignIn() {
             inputHeight={40}
             isInvalid={!!errors.email}
             validationMessage={errors.email?.message}
-            type="email"
             onChange={onChange}
             value={value}
+            type="email"
             placeholder="Email"
           />
         )}

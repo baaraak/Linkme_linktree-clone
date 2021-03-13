@@ -1,7 +1,15 @@
 import React from "react";
 
 const Site = ({ site }) => {
-  return <div>{JSON.stringify(site)}</div>;
+  console.log(site);
+  return (
+    <div
+      className="site"
+      style={{ backgroundImage: `url(${site.background})` }}
+    >
+      {JSON.stringify(site)}
+    </div>
+  );
 };
 
 export default Site;

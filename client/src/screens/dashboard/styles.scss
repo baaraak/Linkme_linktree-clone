@@ -16,6 +16,20 @@
     }
   }
 
+  // box general styling
+  .box {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 7px;
+    margin-bottom: 3rem;
+
+    &__title {
+      margin: 3rem 0 1rem;
+      color: #000;
+      display: block;
+    }
+  }
+
   .preview {
     background: #f5f6f8;
     border-top: 1px solid rgb(218, 222, 224);
@@ -63,19 +77,6 @@
 // Appearance page
 .appearance {
   margin-top: 2.5rem;
-
-  .box {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 7px;
-    margin-bottom: 3rem;
-
-    &__title {
-      margin: 3rem 0 1rem;
-      color: #000;
-      display: block;
-    }
-  }
 
   .profile section {
     display: grid;
@@ -127,5 +128,36 @@
         font-weight: bold;
       }
     }
+  }
+}
+
+// Account page
+.account {
+  .account__title {
+    font-size: 2rem;
+    margin: 3.5rem 0 2rem;
+    display: block;
+    color: #000;
+    text-align: center;
+  }
+
+  .box {
+    margin-bottom: 1rem;
+  }
+}
+
+// Dialogs
+
+.qrcode-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem 1rem;
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  img {
   }
 }

@@ -6,31 +6,22 @@ import {
   TextInputField,
 } from "evergreen-ui";
 import Button from "components/button/Button";
-import React, { useEffect, useRef } from "react";
+import React from "react";
+import { Transformation, Image, Placeholder } from "cloudinary-react";
 import { loadScript } from "services/utils";
-import { Cloudinary } from "services/cloudinary";
+import {
+  Cloudinary,
+  CLOUD_NAME,
+  useCloudinaryWidget,
+} from "services/cloudinary";
 
 const Profile = ({ username, avatar, title, bio, onChange }) => {
-  const ref = useRef();
-
-  const initImageCloudinaryWidget = async () => {
-    await loadScript(Cloudinary.widget_script);
-
-    ref.current = window.cloudinary.createUploadWidget(
-      Cloudinary.options,
-      handleCloudinaryResponse
-    );
-  };
-
-  const handleCloudinaryResponse = (error, result) => {
+  const { widget } = useCloudinaryWidget((error, result) => {
     if (!error && result && result.event === "success") {
-      onChange({ avatar: result.info.secure_url });
+      console.log(result.info);
+      onChange({ avatar: result.info.public_id });
     }
-  };
-
-  useEffect(() => {
-    initImageCloudinaryWidget();
-  }, []);
+  });
 
   return (
     <div className="profile">
@@ -44,7 +35,7 @@ const Profile = ({ username, avatar, title, bio, onChange }) => {
             height={40}
             appearance="primary"
             fullWidth
-            onClick={() => ref.current.open()}
+            onClick={() => console.log(widget.open())}
           >
             Pick an Image
           </Button>

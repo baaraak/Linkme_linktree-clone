@@ -38,9 +38,10 @@ export default {
     get: (id) => callApi(`/site/${id}`),
     update: (fields) => callApi(`/site`, "PATCH", fields),
   },
-  users: {
-    site: (username) => callApi(`/users/${username}`),
-    update: (fields) => callApi(`/users`, "PATCH", fields),
+  user: {
+    site: (username) => callApi(`/user/${username}`),
+    update: (fields) => callApi(`/user`, "PATCH", fields),
+    delete: () => callApi("/user", "DELETE"),
   },
   link: {
     create: () => callApi("/link", "POST"),

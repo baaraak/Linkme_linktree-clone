@@ -22,8 +22,8 @@ This is a showcase product I've built in my spare time. It's a very good example
 
 - `git clone https://github.com/baaraak/linktree-clone.git`
 - Create an empty `.env` file in `/api`, copy `/api/.env.example` contents into it, and fill in your database username and password.
-- `npm run install-dependencies`
-- `npm run dev`
+- client `yarn && yarn start`
+- client `yarn && yarn dev`
 - App should now be running on `http://localhost:3000/`
 
 ## What's missing?
