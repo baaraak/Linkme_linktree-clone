@@ -1,6 +1,10 @@
 {
   "name": "linkme",
   "version": "0.0.1",
+  "scripts": {
+    "client": "cd client && yarn start",
+    "api": "cd api && yarn dev"
+  },
   "dependencies": {
     "cloudinary-react": "^1.7.0"
   }

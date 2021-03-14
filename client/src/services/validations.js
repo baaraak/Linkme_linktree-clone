@@ -22,7 +22,7 @@ export const signupSchema = Joi.object({
 /**
  * User Schemas
  */
-export const userSchema = Joi.object({
-  name: Joi.string().required().min(4).max(24),
+export const profileSchema = Joi.object({
+  fullName: Joi.string().required().min(4).max(24),
   email: Joi.string().email({ tlds: { allow: false } }),
 });

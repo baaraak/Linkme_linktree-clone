@@ -11,19 +11,19 @@ import {
 } from "evergreen-ui";
 import { useAuth } from "context/auth.context";
 import { Controller, useForm } from "react-hook-form";
-import { userSchema } from "services/validations";
+import { profileSchema } from "services/validations";
 import { joiResolver } from "@hookform/resolvers/joi";
 
 export default function Account() {
   const { user, _delete, update } = useAuth();
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
   const { control, handleSubmit, errors, formState } = useForm({
-    resolver: joiResolver(userSchema),
+    resolver: joiResolver(profileSchema),
     mode: "onChange",
   });
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState();
-  const { isDirty, isValid } = formState;
+  const { isDirty } = formState;
 
   const onSubmit = async (values) => {
     setLoading(true);
@@ -56,8 +56,8 @@ export default function Account() {
               <TextInputField
                 label="Name"
                 inputHeight={40}
-                isInvalid={!!errors.name}
-                validationMessage={errors.name?.message}
+                isInvalid={!!errors.fullName}
+                validationMessage={errors.fullName?.message}
                 onChange={onChange}
                 value={value}
                 placeholder="Name"
@@ -83,12 +83,7 @@ export default function Account() {
             )}
           />
         </div>
-        <Button
-          height={40}
-          height={50}
-          type="submit"
-          disabled={!isDirty || !isValid}
-        >
+        <Button height={40} height={50} type="submit" disabled={!isDirty}>
           Save details
         </Button>
       </form>
