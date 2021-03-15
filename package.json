@@ -4,8 +4,5 @@
   "scripts": {
     "client": "cd client && yarn start",
     "api": "cd api && yarn dev"
-  },
-  "dependencies": {
-    "cloudinary-react": "^1.7.0"
   }
 }
