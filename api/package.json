@@ -11,7 +11,9 @@
     "start": "cross-env NODE_ENV=production npm start ./src/index.js",
     "dev": "nodemon ./src/index.js",
     "lint": "eslint ./src/ --ignore-path .gitignore --ignore-pattern internals/scripts",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
+    "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -25,6 +27,7 @@
     "email-templates": "^6.0.3",
     "express": "^4.15.2",
     "express-validation": "^1.0.2",
+    "google-auth-library": "^7.0.2",
     "helmet": "^3.5.0",
     "http-status": "^1.0.1",
     "joi": "^10.4.1",
@@ -36,7 +39,7 @@
     "morgan": "^1.8.1",
     "nodemailer": "^6.3.1",
     "passport": "^0.4.0",
-    "passport-http-bearer": "^1.0.1",
+    "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "4.0.0",
     "uuid": "^3.1.0"
   },

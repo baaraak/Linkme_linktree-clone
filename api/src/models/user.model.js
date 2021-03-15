@@ -51,9 +51,7 @@ const userSchema = new mongoose.Schema(
       maxlength: 30,
     },
     site: { type: mongoose.Schema.Types.ObjectId, ref: "Site" },
-    services: {
-      google: String,
-    },
+    googleId: String,
   },
   {
     timestamps: true,
@@ -185,25 +183,35 @@ userSchema.statics = {
     return error;
   },
 
-  async oAuthLogin({ service, id, email, name, picture }) {
-    const user = await this.findOne({
-      $or: [{ [`services.${service}`]: id }, { email }],
+  async oAuthLogin({ id, email, name, picture }) {
+    const existingUser = await this.findOne({
+      $or: [{ googleId: id }, { email }],
     });
-    if (user) {
-      user.services[service] = id;
-      if (!user.name) user.name = name;
-      if (!user.picture) user.picture = picture;
-      return user.save();
+    if (existingUser) {
+      existingUser.googleId = id;
+      if (!existingUser.name) existingUser.name = name;
+      if (!existingUser.picture) existingUser.picture = picture;
+      return existingUser.save();
     }
     const username = generateUsername(email);
     const password = uuidv4();
-    return this.create({
-      services: { [service]: id },
+
+    const user = await this.create({
+      googleId: id,
       email,
       password,
       name,
       picture,
     });
+
+    const site = new Site({
+      user: user._id,
+    });
+    const userSite = await site.save();
+
+    user.site = userSite._id;
+    await user.save();
+    return user;
   },
 };
 

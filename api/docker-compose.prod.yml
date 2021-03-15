@@ -1,0 +1,6 @@
+version: '3'
+
+services:
+  linkme-api:
+    container_name: linkme-api-prod
+    command: yarn start

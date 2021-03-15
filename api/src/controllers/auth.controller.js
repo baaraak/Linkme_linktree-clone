@@ -57,9 +57,7 @@ exports.login = async (req, res, next) => {
 exports.oAuth = async (req, res, next) => {
   try {
     const { user } = req;
-    const accessToken = user.token();
-    const userTransformed = user.transform();
-    return res.json({ token: user.token(), user: userTransformed });
+    res.json({ token: user.token(), user: user.transform() });
   } catch (error) {
     return next(error);
   }

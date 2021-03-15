@@ -56,6 +56,15 @@ function AuthProvider(props) {
     [setUser]
   );
 
+  const googleAuth = useCallback(
+    async (accessToken) => {
+      const { token, user } = await api.auth.google(accessToken);
+      storeAuthToken(token);
+      setUser(user);
+    },
+    [setUser]
+  );
+
   const logout = useCallback(() => {
     removeStoredAuthToken();
     window.location.reload();
@@ -75,8 +84,8 @@ function AuthProvider(props) {
   }, [setUser]);
 
   const value = useMemo(
-    () => ({ user, login, logout, register, update, _delete }),
-    [login, logout, register, update, _delete, user]
+    () => ({ user, login, logout, register, update, _delete, googleAuth }),
+    [login, logout, register, update, _delete, user, googleAuth]
   );
 
   if (loading) {

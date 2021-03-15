@@ -1,7 +1,13 @@
 const httpStatus = require("http-status");
 const passport = require("passport");
+const { OAuth2Client } = require("google-auth-library");
 const User = require("../models/user.model");
 const APIError = require("../utils/APIError");
+
+const client = new OAuth2Client({
+  clientId: process.env.GOOGLE_OAUTH_CLIENT,
+  clientSecret: process.env.GOOGLE_OAUTH_SECRET,
+});
 
 const handleJWT = (req, res, next) => async (err, user, info) => {
   const error = err || info;
@@ -31,4 +37,20 @@ exports.authorize = () => (req, res, next) =>
     next
   );
 
-exports.oAuth = (service) => passport.authenticate(service, { session: false });
+exports.oAuth = async (req, res, next) => {
+  try {
+    // verify id token
+    const ticket = await client.verifyIdToken({
+      idToken: req.body.tokenId,
+      audience: process.env.GOOGLE_OAUTH_CLIENT,
+    });
+    // get user data
+    const { sub: id, email, picture, name } = ticket.getPayload();
+    console.log({ id });
+    const user = await User.oAuthLogin({ id, email, picture, name });
+    req.user = user;
+    next();
+  } catch (e) {
+    next(e);
+  }
+};

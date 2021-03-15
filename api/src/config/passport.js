@@ -1,8 +1,7 @@
 const JwtStrategy = require("passport-jwt").Strategy;
-const BearerStrategy = require("passport-http-bearer");
 const { ExtractJwt } = require("passport-jwt");
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { jwtSecret } = require("./constants");
-const authProviders = require("../services/authProviders");
 const User = require("../models/user.model");
 
 const jwtOptions = {
@@ -20,15 +19,4 @@ const jwt = async (payload, done) => {
   }
 };
 
-const oAuth = (service) => async (token, done) => {
-  try {
-    const userData = await authProviders[service](token);
-    const user = await User.oAuthLogin(userData);
-    return done(null, user);
-  } catch (err) {
-    return done(err);
-  }
-};
-
 exports.jwt = new JwtStrategy(jwtOptions, jwt);
-exports.google = new BearerStrategy(oAuth("google"));

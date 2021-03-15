@@ -1,5 +1,6 @@
 import { Link, Text, TextInputField } from "evergreen-ui";
 import React, { useState } from "react";
+import { useGoogleLogin } from "react-google-login";
 import Button from "components/button/Button";
 import Logo from "components/logo/Logo";
 import { useSpring, animated as a } from "react-spring";
@@ -10,9 +11,21 @@ import SignUp from "./SignUp";
 import { Switch, Route, Redirect, useRouteMatch } from "react-router-dom";
 import { useAuth } from "context/auth.context";
 import { Routes } from "routes";
+import { GOOGLE_CLIENT_ID } from "services/constants";
 
 export default function AuthScreen() {
-  const { user } = useAuth();
+  const { user, googleAuth } = useAuth();
+
+  const onGoogleAuthResponse = (res) => {
+    if (res.tokenId) {
+      googleAuth({ tokenId: res.tokenId });
+    }
+  };
+  const { signIn, loaded } = useGoogleLogin({
+    onSuccess: onGoogleAuthResponse,
+    onFailure: onGoogleAuthResponse,
+    clientId: GOOGLE_CLIENT_ID,
+  });
 
   // Logged in users shouldn't see auth pages.
   if (user) return <Redirect to={Routes.Dashboard} />;
@@ -25,22 +38,26 @@ export default function AuthScreen() {
       </Text>
 
       <div className="auth__forms shadow-md">
-        <Button fullWidth iconBefore={GoogleIcon} height={45}>
+        <Button
+          fullWidth
+          iconBefore={GoogleIcon}
+          isLoading={!loaded}
+          height={45}
+          onClick={signIn}
+        >
           Continue with Google
         </Button>
         <div className="separator">
           <span>or</span>
         </div>
-        <Route path={Routes.Signup}>
-          <SignUp />
-        </Route>
+
         <Route path={Routes.Signin}>
           <SignIn />
         </Route>
-        <Route path={Routes.ForgotPassword}>forgot password</Route>
-        <Route path="*">
-          <Redirect to={Routes.Signin} />
+        <Route path={Routes.Signup}>
+          <SignUp />
         </Route>
+        <Route path={Routes.ForgotPassword}>forgot password</Route>
       </div>
     </div>
   );

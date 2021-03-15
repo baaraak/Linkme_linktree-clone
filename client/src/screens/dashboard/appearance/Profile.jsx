@@ -37,7 +37,7 @@ const Profile = ({ username, avatar, title, bio, onChange }) => {
             fullWidth
             onClick={() => console.log(widget.open())}
           >
-            Pick an Image
+            Pick Image
           </Button>
           <Button
             height={40}

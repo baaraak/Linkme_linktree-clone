@@ -33,6 +33,7 @@ export default {
     register: (user) => callApi("/auth/register", "POST", user),
     resetPassword: (user) => callApi("/auth/register", "POST", user),
     forgotPassword: (user) => callApi("/auth/register", "POST", user),
+    google: (access_token) => callApi("/auth/google", "POST", access_token),
   },
   site: {
     get: (id) => callApi(`/site/${id}`),

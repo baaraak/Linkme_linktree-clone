@@ -1,3 +1,4 @@
+const passport = require("passport");
 const express = require("express");
 const validate = require("express-validation");
 const controller = require("../controllers/auth.controller");
@@ -39,9 +40,7 @@ router
 /**
  * {post} auth/google Google Login with google. Creates a new user if it does not exist
  */
-router
-  .route("/google")
-  .post(validate(oAuth), oAuthLogin("google"), controller.oAuth);
+router.route("/google").post(validate(oAuth), oAuthLogin, controller.oAuth);
 
 /**
  * {post} auth/facebook Login with facebook. Creates a new user if it does not exist
