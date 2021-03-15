@@ -2,7 +2,7 @@ import { getStoredAuthToken } from "./token";
 
 const API_URL =
   process.env.NODE_ENV === "production"
-    ? "https://---"
+    ? "https://linkmee-api.herokuapp.com"
     : "http://localhost:4000";
 
 function callApi(url, method = "GET", data) {
