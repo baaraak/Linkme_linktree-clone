@@ -3,9 +3,9 @@
 <div align="center">React.js, Hooks, Context API, Express.js, MongoDB and more 🎗</div>
 
 <h3 align="center">
-  <a href="https://www.google.com/">Visit the live app</a> |
-  <a href="https://github.com/baaraak/linktree-clone/tree/master/client">View client</a> |
-  <a href="https://github.com/baaraak/linktree-clone/tree/master/api">View API</a>
+  <a href="https://linkmee.vercel.app/">Visit the live app</a> |
+  <a href="https://github.com/baaraak/Linkme_linktree-clone/tree/master/client">View client</a> |
+  <a href="https://github.com/baaraak/Linkme_linktree-clone/tree/master/api">View API</a>
 </h3>
 
 ![App screenshot](https://i.ibb.co/W3qVvCn/jira-jpg)
@@ -20,7 +20,7 @@ This is a showcase product I've built in my spare time. It's a very good example
 
 ## Setting up development environment 🛠
 
-- `git clone https://github.com/baaraak/linktree-clone.git`
+- `git clone https://github.com/baaraak/Linkme_linktree-clone.git`
 - Create an empty `.env` file in `/api`, copy `/api/.env.example` contents into it, and fill in your database username and password.
 - client `yarn && yarn start`
 - client `yarn && yarn dev`
@@ -37,7 +37,7 @@ There are features missing from this showcase product which should exist in a re
 <hr>
 
 <h3>
-  <a href="https://www.google.com/">Visit the live app</a> |
-  <a href="https://github.com/baaraak/linktree-clone/tree/master/client">View client</a> |
-  <a href="https://github.com/baaraak/linktree-clone/tree/master/api">View API</a>
+  <a href="https://linkmee.vercel.app/">Visit the live app</a> |
+  <a href="https://github.com/baaraak/Linkme_linktree-clone/tree/master/client">View client</a> |
+  <a href="https://github.com/baaraak/Linkme_linktree-clone/tree/master/api">View API</a>
 </h3>
