@@ -9,12 +9,13 @@
 </h3>
 
 ![App screenshot](https://i.ibb.co/W3qVvCn/jira-jpg)
+
 ## Setting up development environment 🛠
 
 - `git clone https://github.com/baaraak/Linkme_linktree-clone.git`
 - Create an empty `.env` file in `/api`, copy `/api/.env.example` contents into it, and fill in your database username and password.
-- client `yarn && yarn start`
-- client `yarn && yarn dev`
+- `yarn client` - Client development server
+- `yarn api` - Nodemon dev server
 - App should now be running on `http://localhost:3000/`
 
 ## What's missing?
