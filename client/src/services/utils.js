@@ -48,3 +48,8 @@ export const copyToClipboard = (text) => {
   document.execCommand("copy");
   document.body.removeChild(el);
 };
+
+// Generate site url from username
+export const generateSiteUrl = (username) => {
+  return `${window.location.origin}/${username}`;
+};

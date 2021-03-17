@@ -12,6 +12,7 @@ import "./styles.scss";
 import { useAuth } from "context/auth.context";
 import Spinner from "components/spinner/Spinner";
 import { Routes } from "routes";
+import Preview from "components/preview/Preview";
 
 const Links = React.lazy(() => import("./links"));
 const Account = React.lazy(() => import("./account"));
@@ -49,7 +50,7 @@ export default function DashboardScreen() {
           </React.Suspense>
         </SiteProvider>
       </div>
-      {width > MINIMUM_PREVIEW_WIDTH && <div className="preview">preview</div>}
+      {width > MINIMUM_PREVIEW_WIDTH && <Preview username={user.username} />}
     </div>
   );
 }

@@ -4,6 +4,7 @@ import {
   GroupedBarChartIcon,
   MediaIcon,
   Strong,
+  Switch,
   Text,
   Tooltip,
   TrashIcon,
@@ -92,8 +93,8 @@ const Link = ({
     >
       <div className="link">
         <div className="link__handle" {...provided.dragHandleProps}>
-          <svg width="4" height="16" viewBox="0 0 4 16">
-            <path d="M0 2C0 .897.897 0 2 0s2 .897 2 2-.897 2-2 2-2-.897-2-2M0 8c0-1.103.897-2 2-2s2 .897 2 2-.897 2-2 2-2-.897-2-2M0 14c0-1.103.897-2 2-2s2 .897 2 2-.897 2-2 2-2-.897-2-2"></path>
+          <svg viewBox="0 0 16 16" enableBackground="new 0 0 24 24">
+            <path d="M6 2C6 0.9 6.9 0 8 0C9.1 0 10 0.9 10 2C10 3.1 9.1 4 8 4C6.9 4 6 3.1 6 2M6 8C6 6.9 6.9 6 8 6C9.1 6 10 6.9 10 8C10 9.1 9.1 10 8 10C6.9 10 6 9.1 6 8M6 14C6 12.9 6.9 12 8 12C9.1 12 10 12.9 10 14C10 15.1 9.1 16 8 16C6.9 16 6 15.1 6 14"></path>
           </svg>
         </div>
         <div className="link__content">
@@ -102,7 +103,7 @@ const Link = ({
               onBlur={handleChange}
               name="title"
               defaultValue={title}
-              placeholder="Enter title"
+              placeholder="Title"
             />
             <EditIcon />
           </div>
@@ -133,14 +134,17 @@ const Link = ({
                 <GroupedBarChartIcon />
               </Tooltip>
             </div>
-            <div
-              className="trash"
-              onClick={() => setLinkMessage(Messages.DELETE)}
-            >
-              <Tooltip content="Delete">
-                <TrashIcon />
-              </Tooltip>
-            </div>
+          </div>
+        </div>
+        <div className="link__status">
+          <Switch height={21} hasCheckIcon={false} />
+          <div
+            className="trash"
+            onClick={() => setLinkMessage(Messages.DELETE)}
+          >
+            <Tooltip content="Delete">
+              <TrashIcon />
+            </Tooltip>
           </div>
         </div>
       </div>

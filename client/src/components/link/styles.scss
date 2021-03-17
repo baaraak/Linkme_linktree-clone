@@ -46,7 +46,7 @@
 .link {
   background: #fff;
 
-  height: 110px;
+  height: 120px;
   border-radius: 5px;
   display: flex;
   &__handle {
@@ -59,11 +59,12 @@
     cursor: move;
     svg {
       fill: #acb5bf;
+      width: 20px;
     }
   }
 
   &__content {
-    padding: 1rem 0 0.5rem 1rem;
+    padding: 1rem 0 1rem 1rem;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -76,12 +77,15 @@
       input {
         border: none;
         outline: none;
+        font-size: 0.9rem;
       }
       &.link__title {
         margin-bottom: 0.5rem;
         font-weight: bold;
+
         input {
           font-weight: bold;
+          font-size: 1rem;
         }
       }
     }
@@ -99,9 +103,23 @@
         opacity: 0.8;
       }
     }
+  }
+
+  &__status {
+    padding: 1rem;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
     .trash {
-      margin-left: auto;
+      opacity: 0.5;
+      cursor: pointer;
+      transition: opacity 300ms ease;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
 }

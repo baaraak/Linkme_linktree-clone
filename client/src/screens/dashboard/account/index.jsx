@@ -13,6 +13,7 @@ import { useAuth } from "context/auth.context";
 import { Controller, useForm } from "react-hook-form";
 import { profileSchema } from "services/validations";
 import { joiResolver } from "@hookform/resolvers/joi";
+import { generateSiteUrl } from "services/utils";
 
 export default function Account() {
   const { user, _delete, update } = useAuth();
@@ -128,7 +129,7 @@ export default function Account() {
               By selecting YES, DELETE MY ACCOUNT below, your primary tree (@
               {user.username}) will be imediately terminated and your data will
               be lost. Visitors will no longer be able to{" "}
-              <Link href={`${window.location.origin}/${user.username}`}>
+              <Link href={generateSiteUrl(user.username)}>
                 access your URL.
               </Link>
             </Text>

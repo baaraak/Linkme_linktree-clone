@@ -35,6 +35,27 @@
   .preview {
     background: #f5f6f8;
     border-top: 1px solid rgb(218, 222, 224);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    &__wrapper {
+      height: 80%;
+      max-width: 95%;
+
+      &::after {
+        content: "";
+        background-image: url("../../icons/iphone.svg");
+        background-position: 50%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        pointer-events: none;
+      }
+    }
+
+    iframe {
+      height: 100%;
+    }
   }
 
   @media only screen and (min-width: 768px) {

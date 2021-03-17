@@ -12,15 +12,13 @@ import {
 import QRCode from "qrcode";
 import Button from "components/button/Button";
 
-import { copyToClipboard } from "services/utils";
+import { copyToClipboard, generateSiteUrl } from "services/utils";
 import "./toolbar.scss";
 import { QR_CODE_SIZE } from "services/constants";
 
 export default function Toolbar({ username }) {
   const [qrCode, setQrCode] = useState();
-  const url = useMemo(() => `${window.location.origin}/${username}`, [
-    username,
-  ]);
+  const url = useMemo(() => generateSiteUrl(username), [username]);
 
   const handleOnCopy = () => {
     copyToClipboard(url);

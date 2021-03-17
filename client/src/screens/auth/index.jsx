@@ -1,4 +1,4 @@
-import { Link, Text, TextInputField } from "evergreen-ui";
+import { Alert, Link, Strong, Text, TextInputField } from "evergreen-ui";
 import React, { useState } from "react";
 import { useGoogleLogin } from "react-google-login";
 import Button from "components/button/Button";
@@ -59,6 +59,20 @@ export default function AuthScreen() {
         </Route>
         <Route path={Routes.ForgotPassword}>forgot password</Route>
       </div>
+      <Alert
+        appearance="card"
+        marginTop={25}
+        title={
+          <div>
+            <span style={{ marginRight: "20px" }}>
+              <Strong>Email:</Strong>
+              <Text>admin@gmail.com</Text>
+            </span>
+            <Strong>Password:</Strong>
+            <Text>123123</Text>
+          </div>
+        }
+      />
     </div>
   );
 }
