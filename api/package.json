@@ -24,7 +24,7 @@
     "cors": "^2.8.3",
     "cross-env": "^6.0.3",
     "dotenv-safe": "^6.0.0",
-    "email-templates": "^6.0.3",
+    "email-templates": "^8.0.3",
     "express": "^4.15.2",
     "express-validation": "^1.0.2",
     "google-auth-library": "^7.0.2",
@@ -47,14 +47,7 @@
     "eslint": "^7.5",
     "eslint-config-airbnb-base": "^12.0.1",
     "eslint-plugin-import": "^2.2.0",
-    "lint-staged": "^10.5.4",
     "nodemon": "^2.0.1",
     "prettier": "^2.2.1"
-  },
-  "lint-staged": {
-    "src/**/*.js": [
-      "lint",
-      "prettier"
-    ]
   }
 }

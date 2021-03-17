@@ -43,9 +43,7 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "lint-staged": "^10.5.4"
-  },
+  "devDependencies": {},
   "lint-staged": {
     "src/**/*.js": []
   }

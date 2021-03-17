@@ -2,16 +2,8 @@
   "name": "linkme",
   "version": "0.0.1",
   "scripts": {
-    "prepare": "husky install",
     "client": "cd client && yarn start",
-    "api": "cd api && yarn dev",
-    "lint:client": "cd client && yarn precommit",
-    "lint:api": "cd api && yarn precommit"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn lint:client && yarn lint:api"
-    }
+    "api": "cd api && yarn dev"
   },
   "devDependencies": {
     "husky": "^5.1.3"
