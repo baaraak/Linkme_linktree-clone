@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import LogoIcon from "icons/Logo";
-import "./logo.scss";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import LogoIcon from 'icons/Logo';
+import './logo.scss';
 
 const Logo = ({ small = false, size = 50 }) => {
   return (

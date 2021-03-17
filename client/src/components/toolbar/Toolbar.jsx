@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from 'react';
 import {
   Dialog,
   Link,
@@ -8,13 +8,13 @@ import {
   Strong,
   Text,
   toaster,
-} from "evergreen-ui";
-import QRCode from "qrcode";
-import Button from "components/button/Button";
+} from 'evergreen-ui';
+import QRCode from 'qrcode';
+import Button from 'components/button/Button';
 
-import { copyToClipboard, generateSiteUrl } from "services/utils";
-import "./toolbar.scss";
-import { QR_CODE_SIZE } from "services/constants";
+import { copyToClipboard, generateSiteUrl } from 'services/utils';
+import './toolbar.scss';
+import { QR_CODE_SIZE } from 'services/constants';
 
 export default function Toolbar({ username }) {
   const [qrCode, setQrCode] = useState();
@@ -22,7 +22,7 @@ export default function Toolbar({ username }) {
 
   const handleOnCopy = () => {
     copyToClipboard(url);
-    toaster.success("Copied to Clipboard!");
+    toaster.success('Copied to Clipboard!');
   };
 
   const generateQR = async () => {
@@ -40,7 +40,7 @@ export default function Toolbar({ username }) {
   return (
     <div className="toolbar">
       <Strong size={400} color="black">
-        My Linkme:{" "}
+        My Linkme:{' '}
       </Strong>
       <Link href={url} size={400} color="neutral" target="_blank">
         {url}
@@ -50,9 +50,7 @@ export default function Toolbar({ username }) {
           <Menu>
             <Menu.Group>
               <Menu.Item onClick={handleOnCopy}>Copy my Linkme URL</Menu.Item>
-              <Menu.Item onClick={generateQR}>
-                Download my Linkme QR Code
-              </Menu.Item>
+              <Menu.Item onClick={generateQR}>Download my Linkme QR Code</Menu.Item>
             </Menu.Group>
           </Menu>
         }

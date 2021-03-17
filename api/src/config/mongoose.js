@@ -1,18 +1,18 @@
-const mongoose = require('mongoose');
-const { mongo, env } = require('./constants');
+const mongoose = require("mongoose");
+const { mongo, env } = require("./constants");
 
 // set mongoose Promise to Bluebird
 mongoose.Promise = Promise;
 
 // Exit application on error
-mongoose.connection.on('error', (err) => {
-    console.log(`MongoDB connection error: ${err}`);
-    process.exit(-1);
+mongoose.connection.on("error", (err) => {
+  console.log(`MongoDB connection error: ${err}`);
+  process.exit(-1);
 });
 
 // print mongoose logs in dev env
-if (env === 'development') {
-    mongoose.set('debug', true);
+if (env === "development") {
+  mongoose.set("debug", true);
 }
 
 /**
@@ -22,13 +22,13 @@ if (env === 'development') {
  * @public
  */
 exports.connect = () => {
-    mongoose
-        .connect(mongo.uri, {
-            useCreateIndex: true,
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useFindAndModify: false,
-        })
-        .then(() => console.log('mongoDB connected...'));
-    return mongoose.connection;
+  mongoose
+    .connect(mongo.uri, {
+      useCreateIndex: true,
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    })
+    .then(() => console.log("mongoDB connected..."));
+  return mongoose.connection;
 };

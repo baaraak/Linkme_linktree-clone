@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   Menu,
   Avatar,
@@ -12,13 +12,13 @@ import {
   Pane,
   Popover,
   Position,
-} from "evergreen-ui";
-import Logo from "components/logo/Logo";
+} from 'evergreen-ui';
+import Logo from 'components/logo/Logo';
 
-import useWindowDimensions from "hooks/useWindowDimensions";
-import { Routes } from "routes";
+import useWindowDimensions from 'hooks/useWindowDimensions';
+import { Routes } from 'routes';
 
-import "./header.scss";
+import './header.scss';
 
 export default function Header({ username, avatar, onLogout }) {
   const { width } = useWindowDimensions();
@@ -49,11 +49,7 @@ export default function Header({ username, avatar, onLogout }) {
         <div className="avatar">
           <Popover
             content={
-              <Pane
-                display="flex"
-                justifyContent="center"
-                flexDirection="column"
-              >
+              <Pane display="flex" justifyContent="center" flexDirection="column">
                 <Menu>
                   <Menu.Group title={username.toUpperCase()}>
                     <Menu.Item is={Link} to={Routes.Profile} icon={UserIcon}>
@@ -67,11 +63,7 @@ export default function Header({ username, avatar, onLogout }) {
               </Pane>
             }
           >
-            {!isMobile ? (
-              <Avatar src={avatar} size={45} />
-            ) : (
-              <MenuIcon size={20} />
-            )}
+            {!isMobile ? <Avatar src={avatar} size={45} /> : <MenuIcon size={20} />}
           </Popover>
         </div>
       </div>

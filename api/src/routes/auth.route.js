@@ -1,4 +1,3 @@
-const passport = require("passport");
 const express = require("express");
 const validate = require("express-validation");
 const controller = require("../controllers/auth.controller");

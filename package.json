@@ -4,5 +4,6 @@
   "scripts": {
     "client": "cd client && yarn start",
     "api": "cd api && yarn dev"
-  }
+  },
+  "devDependencies": {}
 }

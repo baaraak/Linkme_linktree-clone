@@ -5,14 +5,14 @@ import React, {
   useState,
   useMemo,
   useContext,
-} from "react";
-import api from "../services/api";
-import Spinner from "../components/spinner/Spinner";
+} from 'react';
+import api from '../services/api';
+import Spinner from '../components/spinner/Spinner';
 import {
   getStoredAuthToken,
   removeStoredAuthToken,
   storeAuthToken,
-} from "../services/token";
+} from '../services/token';
 
 const AuthContext = createContext();
 
@@ -44,7 +44,7 @@ function AuthProvider(props) {
       storeAuthToken(token);
       setUser(user);
     },
-    [setUser]
+    [setUser],
   );
 
   const register = useCallback(
@@ -53,7 +53,7 @@ function AuthProvider(props) {
       storeAuthToken(token);
       setUser(user);
     },
-    [setUser]
+    [setUser],
   );
 
   const googleAuth = useCallback(
@@ -62,7 +62,7 @@ function AuthProvider(props) {
       storeAuthToken(token);
       setUser(user);
     },
-    [setUser]
+    [setUser],
   );
 
   const logout = useCallback(() => {
@@ -75,7 +75,7 @@ function AuthProvider(props) {
       const { user } = await api.user.update(fields);
       setUser(user);
     },
-    [setUser]
+    [setUser],
   );
 
   const _delete = useCallback(async () => {
@@ -85,7 +85,7 @@ function AuthProvider(props) {
 
   const value = useMemo(
     () => ({ user, login, logout, register, update, _delete, googleAuth }),
-    [login, logout, register, update, _delete, user, googleAuth]
+    [login, logout, register, update, _delete, user, googleAuth],
   );
 
   if (loading) {

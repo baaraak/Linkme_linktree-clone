@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import api from "../services/api";
-import Spinner from "../components/spinner/Spinner";
-import { useAuth } from "./auth.context";
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import api from '../services/api';
+import Spinner from '../components/spinner/Spinner';
+import { useAuth } from './auth.context';
 import {
   getStoredAuthToken,
   removeStoredAuthToken,
   storeAuthToken,
-} from "../services/token";
-import { toaster } from "evergreen-ui";
+} from '../services/token';
+import { toaster } from 'evergreen-ui';
 
 const AuthContext = React.createContext();
 
@@ -36,14 +36,14 @@ function SiteProvider(props) {
       const { site } = await api.site.update(fields);
       setData(site);
     },
-    [setData]
+    [setData],
   );
 
   const updateLinks = useCallback(
     (links) => {
       setData((d) => ({ ...d, links }));
     },
-    [setData]
+    [setData],
   );
 
   const value = useMemo(() => ({ data, updateLinks, update }), [

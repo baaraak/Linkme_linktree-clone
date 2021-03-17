@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   EditIcon,
   GroupedBarChartIcon,
@@ -8,11 +8,11 @@ import {
   Text,
   Tooltip,
   TrashIcon,
-} from "evergreen-ui";
+} from 'evergreen-ui';
 
-import "./styles.scss";
-import ResizableInput from "../resizable-input/ResizableInput";
-import Button from "../button/Button";
+import './styles.scss';
+import ResizableInput from '../resizable-input/ResizableInput';
+import Button from '../button/Button';
 
 const DeleteComponent = ({ onClose, onDelete, _id }) => {
   return (
@@ -52,18 +52,18 @@ const ThumbnailComponent = ({ onThumbnail }) => {
 
 const Messages = {
   DELETE: {
-    id: "delete",
-    title: "Delete Link",
+    id: 'delete',
+    title: 'Delete Link',
     component: <DeleteComponent />,
   },
   ANALYTIC: {
-    id: "analytic",
-    title: "Link Analytics",
+    id: 'analytic',
+    title: 'Link Analytics',
     component: <AnalyticComponent />,
   },
   THUMBNAIL: {
-    id: "thumbnail",
-    title: "Add Thumbnail",
+    id: 'thumbnail',
+    title: 'Add Thumbnail',
     component: <ThumbnailComponent />,
   },
 };
@@ -87,7 +87,7 @@ const Link = ({
   };
   return (
     <div
-      className={`link-container ${isDragging ? "shadow-2xl" : "shadow"}`}
+      className={`link-container ${isDragging ? 'shadow-2xl' : 'shadow'}`}
       {...provided.draggableProps}
       ref={provided.innerRef}
     >
@@ -138,10 +138,7 @@ const Link = ({
         </div>
         <div className="link__status">
           <Switch height={21} hasCheckIcon={false} />
-          <div
-            className="trash"
-            onClick={() => setLinkMessage(Messages.DELETE)}
-          >
+          <div className="trash" onClick={() => setLinkMessage(Messages.DELETE)}>
             <Tooltip content="Delete">
               <TrashIcon />
             </Tooltip>

@@ -1,5 +1,4 @@
 const httpStatus = require("http-status");
-const { omit } = require("lodash");
 const Link = require("../models/link.model");
 const Site = require("../models/site.model");
 const User = require("../models/user.model");
@@ -26,10 +25,11 @@ exports.create = async (req, res, next) => {
 /**
  * Update existing user
  */
-exports.update = (req, res, next) => {
+exports.update = async (req, res, next) => {
   const user = Object.assign(req.user, req.body);
 
-  user.save().then((savedUser) => res.json({ user: savedUser.transform() }));
+  const savedUser = await user.save();
+  return res.json({ user: savedUser.transform() });
 };
 
 /**
@@ -60,8 +60,8 @@ exports.site = async (req, res, next) => {
     const site = await Site.findById(user.site)
       .populate("links")
       .populate("user", "-password");
-    res.json({ site });
+    return res.json({ site });
   } catch (error) {
-    next(error);
+    return next(error);
   }
 };

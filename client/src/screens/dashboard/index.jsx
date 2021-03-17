@@ -1,22 +1,22 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import { MINIMUM_PREVIEW_WIDTH } from "services/constants";
-import useWindowDimensions from "hooks/useWindowDimensions";
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import { MINIMUM_PREVIEW_WIDTH } from 'services/constants';
+import useWindowDimensions from 'hooks/useWindowDimensions';
 
-import Header from "components/header/Header";
-import Menu from "components/menu/Menu";
-import Toolbar from "components/toolbar/Toolbar";
-import { SiteProvider } from "context/site.context";
+import Header from 'components/header/Header';
+import Menu from 'components/menu/Menu';
+import Toolbar from 'components/toolbar/Toolbar';
+import { SiteProvider } from 'context/site.context';
 
-import "./styles.scss";
-import { useAuth } from "context/auth.context";
-import Spinner from "components/spinner/Spinner";
-import { Routes } from "routes";
-import Preview from "components/preview/Preview";
+import './styles.scss';
+import { useAuth } from 'context/auth.context';
+import Spinner from 'components/spinner/Spinner';
+import { Routes } from 'routes';
+import Preview from 'components/preview/Preview';
 
-const Links = React.lazy(() => import("./links"));
-const Account = React.lazy(() => import("./account"));
-const Appearance = React.lazy(() => import("./appearance"));
+const Links = React.lazy(() => import('./links'));
+const Account = React.lazy(() => import('./account'));
+const Appearance = React.lazy(() => import('./appearance'));
 
 export default function DashboardScreen() {
   const { width } = useWindowDimensions();

@@ -16,9 +16,9 @@ export const reorder = (list, startIndex, endIndex) => {
 // Load external scripts url
 export const loadScript = (src) => {
   return new Promise(function (resolve, reject) {
-    const s = document.createElement("script");
+    const s = document.createElement('script');
     let r = false;
-    s.type = "text/javascript";
+    s.type = 'text/javascript';
     s.src = src;
     s.async = true;
     s.onerror = function (err) {
@@ -26,26 +26,26 @@ export const loadScript = (src) => {
     };
     s.onload = s.onreadystatechange = function () {
       // console.log(this.readyState); // uncomment this line to see which ready states are called.
-      if (!r && (!this.readyState || this.readyState == "complete")) {
+      if (!r && (!this.readyState || this.readyState == 'complete')) {
         r = true;
         resolve();
       }
     };
-    const t = document.getElementsByTagName("script")[0];
+    const t = document.getElementsByTagName('script')[0];
     t.parentElement.insertBefore(s, t);
   });
 };
 
 // Copy text input to user clipboard
 export const copyToClipboard = (text) => {
-  const el = document.createElement("input");
+  const el = document.createElement('input');
   el.value = text;
-  el.setAttribute("readonly", "");
-  el.style.position = "absolute";
-  el.style.left = "-9999px";
+  el.setAttribute('readonly', '');
+  el.style.position = 'absolute';
+  el.style.left = '-9999px';
   document.body.appendChild(el);
   el.select();
-  document.execCommand("copy");
+  document.execCommand('copy');
   document.body.removeChild(el);
 };
 

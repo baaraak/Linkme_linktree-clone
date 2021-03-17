@@ -1,13 +1,13 @@
-import { Alert, Link, Text, TextInputField } from "evergreen-ui";
-import { Link as RouterLink } from "react-router-dom";
-import React, { useState } from "react";
-import Joi from "joi";
-import { joiResolver } from "@hookform/resolvers/joi";
-import { useForm, Controller } from "react-hook-form";
-import { signinSchema } from "services/validations";
-import GoogleIcon from "icons/Google";
-import Button from "components/button/Button";
-import { useAuth } from "context/auth.context";
+import { Alert, Link, Text, TextInputField } from 'evergreen-ui';
+import { Link as RouterLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import Joi from 'joi';
+import { joiResolver } from '@hookform/resolvers/joi';
+import { useForm, Controller } from 'react-hook-form';
+import { signinSchema } from 'services/validations';
+import GoogleIcon from 'icons/Google';
+import Button from 'components/button/Button';
+import { useAuth } from 'context/auth.context';
 
 export default function SignIn() {
   const { control, handleSubmit, errors } = useForm({
@@ -29,9 +29,7 @@ export default function SignIn() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {!!apiError && (
-        <Alert intent="danger" marginBottom={15} title={apiError} />
-      )}
+      {!!apiError && <Alert intent="danger" marginBottom={15} title={apiError} />}
 
       <Controller
         name="email"

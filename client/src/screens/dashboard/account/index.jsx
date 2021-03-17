@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Button from "components/button/Button";
+import React, { useState } from 'react';
+import Button from 'components/button/Button';
 import {
   Alert,
   Dialog,
@@ -8,19 +8,19 @@ import {
   Text,
   TextInputField,
   toaster,
-} from "evergreen-ui";
-import { useAuth } from "context/auth.context";
-import { Controller, useForm } from "react-hook-form";
-import { profileSchema } from "services/validations";
-import { joiResolver } from "@hookform/resolvers/joi";
-import { generateSiteUrl } from "services/utils";
+} from 'evergreen-ui';
+import { useAuth } from 'context/auth.context';
+import { Controller, useForm } from 'react-hook-form';
+import { profileSchema } from 'services/validations';
+import { joiResolver } from '@hookform/resolvers/joi';
+import { generateSiteUrl } from 'services/utils';
 
 export default function Account() {
   const { user, _delete, update } = useAuth();
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
   const { control, handleSubmit, errors, formState } = useForm({
     resolver: joiResolver(profileSchema),
-    mode: "onChange",
+    mode: 'onChange',
   });
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState();
@@ -30,7 +30,7 @@ export default function Account() {
     setLoading(true);
     try {
       await update(values);
-      toaster.success("Account Updated!");
+      toaster.success('Account Updated!');
     } catch (err) {
       setApiError(err.message);
     }
@@ -45,9 +45,7 @@ export default function Account() {
         My information
       </Strong>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {!!apiError && (
-          <Alert intent="danger" marginBottom={15} title={apiError} />
-        )}
+        {!!apiError && <Alert intent="danger" marginBottom={15} title={apiError} />}
         <div className="box shadow-sm">
           <Controller
             name="fullName"
@@ -120,18 +118,15 @@ export default function Account() {
         >
           <div className="delete-user-dialog">
             <Text color="black" size={500}>
-              Deleting your account is irreversible. Please proceed with
-              caution.
+              Deleting your account is irreversible. Please proceed with caution.
             </Text>
             <br />
             <br />
             <Text color="black" size={500}>
               By selecting YES, DELETE MY ACCOUNT below, your primary tree (@
-              {user.username}) will be imediately terminated and your data will
-              be lost. Visitors will no longer be able to{" "}
-              <Link href={generateSiteUrl(user.username)}>
-                access your URL.
-              </Link>
+              {user.username}) will be imediately terminated and your data will be
+              lost. Visitors will no longer be able to{' '}
+              <Link href={generateSiteUrl(user.username)}>access your URL.</Link>
             </Text>
           </div>
         </Dialog>

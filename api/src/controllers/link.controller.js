@@ -61,14 +61,17 @@ exports.update = async (req, res, next) => {
 exports.reOrder = async (req, res, next) => {
   const { links } = req.body;
   try {
-    for (let i = 0; i < links.length; i++) {
+    for (let i = 0; i < links.length; i += 1) {
       const link = links[i];
+      /* eslint-disable no-await-in-loop */
       await Link.findOneAndUpdate(
         { _id: link._id },
-        { $set: { index: link.index } }
+        { $set: { index: link.index } },
       );
     }
-    const sortedLinks = await Link.find({ user: req.user._id });
+    const sortedLinks = await Link.find({
+      user: req.user._id,
+    });
     res.json({ links: sortedLinks });
   } catch (error) {
     next(error);

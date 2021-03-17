@@ -4,20 +4,16 @@ import {
   Textarea,
   TextareaField,
   TextInputField,
-} from "evergreen-ui";
-import Button from "components/button/Button";
-import React from "react";
-import { Transformation, Image, Placeholder } from "cloudinary-react";
-import { loadScript } from "services/utils";
-import {
-  Cloudinary,
-  CLOUD_NAME,
-  useCloudinaryWidget,
-} from "services/cloudinary";
+} from 'evergreen-ui';
+import Button from 'components/button/Button';
+import React from 'react';
+import { Transformation, Image, Placeholder } from 'cloudinary-react';
+import { loadScript } from 'services/utils';
+import { Cloudinary, CLOUD_NAME, useCloudinaryWidget } from 'services/cloudinary';
 
 const Profile = ({ username, avatar, title, bio, onChange }) => {
   const { widget } = useCloudinaryWidget((error, result) => {
-    if (!error && result && result.event === "success") {
+    if (!error && result && result.event === 'success') {
       console.log(result.info);
       onChange({ avatar: result.info.public_id });
     }
@@ -43,7 +39,7 @@ const Profile = ({ username, avatar, title, bio, onChange }) => {
             height={40}
             fullWidth
             disabled={!avatar}
-            onClick={() => onChange({ avatar: "" })}
+            onClick={() => onChange({ avatar: '' })}
           >
             Remove
           </Button>

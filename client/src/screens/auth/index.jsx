@@ -1,17 +1,17 @@
-import { Alert, Link, Strong, Text, TextInputField } from "evergreen-ui";
-import React, { useState } from "react";
-import { useGoogleLogin } from "react-google-login";
-import Button from "components/button/Button";
-import Logo from "components/logo/Logo";
-import { useSpring, animated as a } from "react-spring";
-import "./styles.scss";
-import GoogleIcon from "icons/Google";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import { Switch, Route, Redirect, useRouteMatch } from "react-router-dom";
-import { useAuth } from "context/auth.context";
-import { Routes } from "routes";
-import { GOOGLE_CLIENT_ID } from "services/constants";
+import { Alert, Link, Strong, Text, TextInputField } from 'evergreen-ui';
+import React, { useState } from 'react';
+import { useGoogleLogin } from 'react-google-login';
+import Button from 'components/button/Button';
+import Logo from 'components/logo/Logo';
+import { useSpring, animated as a } from 'react-spring';
+import './styles.scss';
+import GoogleIcon from 'icons/Google';
+import SignIn from './SignIn';
+import SignUp from './SignUp';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import { useAuth } from 'context/auth.context';
+import { Routes } from 'routes';
+import { GOOGLE_CLIENT_ID } from 'services/constants';
 
 export default function AuthScreen() {
   const { user, googleAuth } = useAuth();
@@ -34,7 +34,7 @@ export default function AuthScreen() {
       <Logo />
 
       <Text className="slogan" color="muted" size={600}>
-        Connect audiences to all of your content with just one link{" "}
+        Connect audiences to all of your content with just one link{' '}
       </Text>
 
       <div className="auth__forms shadow-md">
@@ -64,7 +64,7 @@ export default function AuthScreen() {
         marginTop={25}
         title={
           <div>
-            <span style={{ marginRight: "20px" }}>
+            <span style={{ marginRight: '20px' }}>
               <Strong>Email:</Strong>
               <Text>admin@gmail.com</Text>
             </span>

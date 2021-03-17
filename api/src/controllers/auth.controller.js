@@ -1,8 +1,6 @@
 const httpStatus = require("http-status");
 const User = require("../models/user.model");
 const moment = require("moment-timezone");
-const { jwtExpirationInterval } = require("../config/constants");
-const { omit } = require("lodash");
 const APIError = require("../utils/APIError");
 const emailProvider = require("../services/emails/emailProvider");
 
@@ -24,7 +22,10 @@ exports.register = async (req, res, next) => {
   try {
     const user = await new User(req.body).save();
     res.status(httpStatus.CREATED);
-    return res.json({ token: user.token(), user: user.transform() });
+    return res.json({
+      token: user.token(),
+      user: user.transform(),
+    });
   } catch (error) {
     return next(User.checkDuplicates(error));
   }
@@ -38,7 +39,10 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email }).exec();
     if (user && (await user.passwordMatches(password))) {
-      return res.json({ token: user.token(), user: user.transform() });
+      return res.json({
+        token: user.token(),
+        user: user.transform(),
+      });
     }
     throw new APIError({
       status: httpStatus.UNAUTHORIZED,
@@ -57,7 +61,10 @@ exports.login = async (req, res, next) => {
 exports.oAuth = async (req, res, next) => {
   try {
     const { user } = req;
-    res.json({ token: user.token(), user: user.transform() });
+    return res.json({
+      token: user.token(),
+      user: user.transform(),
+    });
   } catch (error) {
     return next(error);
   }
@@ -69,7 +76,7 @@ exports.sendPasswordReset = async (req, res, next) => {
     const user = await User.findOne({ email }).exec();
 
     if (user) {
-      const passwordResetObj = await PasswordResetToken.generate(user);
+      const passwordResetObj = await Promise.resolve();
       emailProvider.sendPasswordReset(passwordResetObj);
       res.status(httpStatus.OK);
       return res.json("success");
@@ -85,11 +92,8 @@ exports.sendPasswordReset = async (req, res, next) => {
 
 exports.resetPassword = async (req, res, next) => {
   try {
-    const { email, password, resetToken } = req.body;
-    const resetTokenObject = await PasswordResetToken.findOneAndRemove({
-      userEmail: email,
-      resetToken,
-    });
+    const { password } = req.body;
+    const resetTokenObject = await Promise.resolve();
 
     const err = {
       status: httpStatus.UNAUTHORIZED,

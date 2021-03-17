@@ -6,11 +6,11 @@ import {
   HelpIcon,
   Strong,
   Text,
-} from "evergreen-ui";
-import React from "react";
-import useCollapse from "react-collapsed";
+} from 'evergreen-ui';
+import React from 'react';
+import useCollapse from 'react-collapsed';
 
-import "./styles.scss";
+import './styles.scss';
 
 const Analytics = () => {
   const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
@@ -30,11 +30,7 @@ const Analytics = () => {
           <HelpIcon />
         </div>
         <div className="icon-chevron">
-          {isExpanded ? (
-            <ChevronUpIcon size={20} />
-          ) : (
-            <ChevronDownIcon size={20} />
-          )}
+          {isExpanded ? <ChevronUpIcon size={20} /> : <ChevronDownIcon size={20} />}
         </div>
       </div>
       <section className="analytics__collapse" {...getCollapseProps()}>

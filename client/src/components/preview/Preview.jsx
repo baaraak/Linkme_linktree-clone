@@ -1,5 +1,5 @@
-import React from "react";
-import { generateSiteUrl } from "services/utils";
+import React from 'react';
+import { generateSiteUrl } from 'services/utils';
 
 const Preview = ({ username }) => {
   return (

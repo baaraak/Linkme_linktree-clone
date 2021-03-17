@@ -1,7 +1,7 @@
-import { Heading, Link } from "evergreen-ui";
-import React from "react";
+import { Heading, Link } from 'evergreen-ui';
+import React from 'react';
 
-import "./styles.scss";
+import './styles.scss';
 
 const Home = () => {
   return (

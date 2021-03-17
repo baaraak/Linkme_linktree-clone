@@ -34,7 +34,7 @@ exports.authorize = () => (req, res, next) =>
   passport.authenticate("jwt", { session: false }, handleJWT(req, res, next))(
     req,
     res,
-    next
+    next,
   );
 
 exports.oAuth = async (req, res, next) => {
@@ -47,7 +47,12 @@ exports.oAuth = async (req, res, next) => {
     // get user data
     const { sub: id, email, picture, name } = ticket.getPayload();
     console.log({ id });
-    const user = await User.oAuthLogin({ id, email, picture, name });
+    const user = await User.oAuthLogin({
+      id,
+      email,
+      picture,
+      name,
+    });
     req.user = user;
     next();
   } catch (e) {

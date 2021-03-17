@@ -1,11 +1,11 @@
-import { Heading, Text } from "evergreen-ui";
-import Button from "components/button/Button";
-import useLinks from "./useLinks";
-import Analytics from "components/analytics/Analytics";
-import Link from "components/link/Link";
-import { reorder } from "services/utils";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useMemo, useState } from "react";
+import { Heading, Text } from 'evergreen-ui';
+import Button from 'components/button/Button';
+import useLinks from './useLinks';
+import Analytics from 'components/analytics/Analytics';
+import Link from 'components/link/Link';
+import { reorder } from 'services/utils';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { useMemo, useState } from 'react';
 
 export default function Links() {
   const { links, create, onDelete, reOrder, update } = useLinks();
@@ -18,7 +18,7 @@ export default function Links() {
     const newL = reorder(
       links,
       links[source.index].index,
-      links[destination.index].index
+      links[destination.index].index,
     );
 
     reOrder({ links: newL });
@@ -46,11 +46,7 @@ export default function Links() {
                 {(provided, snapshot) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     {links.map((link, index) => (
-                      <Draggable
-                        key={link._id}
-                        draggableId={link._id}
-                        index={index}
-                      >
+                      <Draggable key={link._id} draggableId={link._id} index={index}>
                         {(provided, snapshot) => (
                           <Link
                             key={link._id}

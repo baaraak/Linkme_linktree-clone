@@ -1,13 +1,13 @@
-import React from "react";
-import { useAuth } from "./context/auth.context";
-import Spinner from "components/spinner/Spinner";
-import { Route, Switch } from "react-router-dom";
-import { Routes } from "./routes";
-import { Heading, Link } from "evergreen-ui";
+import React from 'react';
+import { useAuth } from './context/auth.context';
+import Spinner from 'components/spinner/Spinner';
+import { Route, Switch } from 'react-router-dom';
+import { Routes } from './routes';
+import { Heading, Link } from 'evergreen-ui';
 
-const DashboardScreen = React.lazy(() => import("./screens/dashboard"));
-const AuthScreen = React.lazy(() => import("./screens/auth"));
-const HomeScreen = React.lazy(() => import("./screens/home"));
+const DashboardScreen = React.lazy(() => import('./screens/dashboard'));
+const AuthScreen = React.lazy(() => import('./screens/auth'));
+const HomeScreen = React.lazy(() => import('./screens/home'));
 
 function App() {
   const { user } = useAuth();

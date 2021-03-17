@@ -7,11 +7,11 @@
     "yarn": "*"
   },
   "scripts": {
-    "precommit": "yarn lint",
     "start": "cross-env NODE_ENV=production node ./src/index.js --scripts-prepend-node-path",
     "dev": "nodemon ./src/index.js",
-    "lint": "eslint ./src/ --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "lint": "eslint ./src/",
     "lint:fix": "yarn lint --fix",
+    "prettier": "prettier ./src/ --write",
     "docker:prod": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up",
     "docker:dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up"
   },
@@ -44,9 +44,10 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
-    "eslint": "^6.4.0",
+    "eslint": "^7.5",
     "eslint-config-airbnb-base": "^12.0.1",
     "eslint-plugin-import": "^2.2.0",
-    "nodemon": "^2.0.1"
+    "nodemon": "^2.0.1",
+    "prettier": "^2.2.1"
   }
 }

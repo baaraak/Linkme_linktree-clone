@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { useSite } from "context/site.context";
-import api from "services/api";
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useSite } from 'context/site.context';
+import api from 'services/api';
 
 export default function useLinks() {
   const {
@@ -18,7 +18,7 @@ export default function useLinks() {
       const { links } = await api.link.delete(id);
       updateLinks(links);
     },
-    [updateLinks]
+    [updateLinks],
   );
 
   const reOrder = useCallback(
@@ -26,7 +26,7 @@ export default function useLinks() {
       updateLinks(newSortedLinks.links);
       await api.link.reOrder(newSortedLinks);
     },
-    [updateLinks]
+    [updateLinks],
   );
 
   const update = useCallback(
@@ -34,7 +34,7 @@ export default function useLinks() {
       const { links } = await api.link.update(id, data);
       updateLinks(links);
     },
-    [updateLinks]
+    [updateLinks],
   );
 
   const sortedLinks = useMemo(() => links.sort((a, b) => a.index - b.index), [

@@ -1,6 +1,5 @@
 const JwtStrategy = require("passport-jwt").Strategy;
 const { ExtractJwt } = require("passport-jwt");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const { jwtSecret } = require("./constants");
 const User = require("../models/user.model");
 

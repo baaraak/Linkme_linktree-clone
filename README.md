@@ -9,15 +9,6 @@
 </h3>
 
 ![App screenshot](https://i.ibb.co/W3qVvCn/jira-jpg)
-
-## What is this and who is it for 🤷‍♀️
-
-This is a showcase product I've built in my spare time. It's a very good example of modern, real-world React codebase.
-
-## Features
-
-- Simple local React state management, without redux, mobx, or similar
-
 ## Setting up development environment 🛠
 
 - `git clone https://github.com/baaraak/Linkme_linktree-clone.git`

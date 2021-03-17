@@ -1,15 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import "./index.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './index.scss';
 
-import App from "./App";
+import App from './App';
 
-import reportWebVitals from "./reportWebVitals";
-import { AuthProvider } from "./context/auth.context";
-import { Routes } from "./routes";
-import api from "./services/api";
-import Site from "./screens/:username";
+import reportWebVitals from './reportWebVitals';
+import { AuthProvider } from './context/auth.context';
+import { Routes } from './routes';
+import api from './services/api';
+import Site from './screens/:username';
 
 async function init() {
   const { pathname } = window.location;
@@ -29,7 +29,7 @@ function renderUserSite(site) {
     <React.StrictMode>
       <Site site={site} />
     </React.StrictMode>,
-    document.getElementById("root")
+    document.getElementById('root'),
   );
 }
 
@@ -42,7 +42,7 @@ function renderApplication() {
         </AuthProvider>
       </Router>
     </React.StrictMode>,
-    document.getElementById("root")
+    document.getElementById('root'),
   );
 }
 

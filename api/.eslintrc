@@ -1,17 +1,21 @@
 {
-    "rules": {
-        "no-console": 0,
-        "no-underscore-dangle": 0,
-        "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
-        "no-use-before-define": ["error", { "variables": false }],
-        "no-multi-str": 0
-    },
-    "env": {
-        "node": true,
-        "mocha": true
-    },
-    "parserOptions": {
-        "ecmaVersion": 8
-    },
-    "extends": ["airbnb-base"]
+  "rules": {
+    "no-console": 0,
+    "arrow-parens": 0,
+    "newline-per-chained-call": 0,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
+    "no-use-before-define": ["error", { "variables": false }],
+    "no-multi-str": 0,
+    "quotes": ["error", "double"],
+    "object-curly-newline": 0
+  },
+  "env": {
+    "node": true,
+    "mocha": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "extends": ["airbnb-base"]
 }

@@ -1,5 +1,3 @@
-const httpStatus = require("http-status");
-const { omit } = require("lodash");
 const Site = require("../models/site.model");
 
 /**
@@ -25,7 +23,9 @@ exports.get = (req, res) => res.json({ site: req.site });
  */
 exports.update = async (req, res, next) => {
   try {
-    const site = await Site.findOne({ user: req.user._id }).populate("links");
+    const site = await Site.findOne({
+      user: req.user._id,
+    }).populate("links");
     const newSite = Object.assign(site, req.body);
     await newSite.save();
     return res.json({ site: newSite });

@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
-import "./styles.scss";
+import './styles.scss';
 const ResizableInput = ({ defaultValue, onChange, placeholder, ...rest }) => {
   const [width, setWidth] = useState();
   const [value, setValue] = useState(defaultValue);

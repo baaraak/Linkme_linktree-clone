@@ -1,16 +1,11 @@
 const mongoose = require("mongoose");
 const httpStatus = require("http-status");
-const { omitBy, isNil } = require("lodash");
 const bcrypt = require("bcryptjs");
 const moment = require("moment-timezone");
 const jwt = require("jwt-simple");
 const uuidv4 = require("uuid/v4");
 const APIError = require("../utils/APIError");
-const {
-  env,
-  jwtSecret,
-  jwtExpirationInterval,
-} = require("../config/constants");
+const { jwtSecret } = require("../config/constants");
 const { generateUsername } = require("../utils/generateUsername");
 const Site = require("./site.model");
 
@@ -26,13 +21,6 @@ const userSchema = new mongoose.Schema(
     bio: String,
     title: String,
     avatar: String,
-    username: {
-      type: String,
-      maxlength: 30,
-      index: true,
-      trim: true,
-      unique: true,
-    },
     email: {
       type: String,
       required: true,
@@ -50,12 +38,15 @@ const userSchema = new mongoose.Schema(
       minlength: 4,
       maxlength: 30,
     },
-    site: { type: mongoose.Schema.Types.ObjectId, ref: "Site" },
+    site: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Site",
+    },
     googleId: String,
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 userSchema.pre("save", async function save(next) {
@@ -146,10 +137,11 @@ userSchema.statics = {
   // Find user by email and tries to generate a JWT token
   async findAndGenerateToken(options) {
     const { email, password } = options;
-    if (!email)
+    if (!email) {
       throw new APIError({
         message: "An email is required",
       });
+    }
 
     const user = await this.findOne({ email }).exec();
     const err = {
@@ -170,6 +162,8 @@ userSchema.statics = {
   // Return new validation error if error is a mongoose duplicate key error
   checkDuplicates(error) {
     if (error.name === "MongoError" && error.code === 11000) {
+      // check if the error from Mongodb is duplication error
+      // eslint-disable-next-line no-useless-escape
       const regex = /index\:\ (?:.*\.)?\$?(?:([_a-z0-9]*)(?:_\d*)|([_a-z0-9]*))\s*dup key/i;
       const match = error.message.match(regex);
       const fieldName = match[1] || match[2];
@@ -190,7 +184,9 @@ userSchema.statics = {
     if (existingUser) {
       existingUser.googleId = id;
       if (!existingUser.name) existingUser.name = name;
-      if (!existingUser.picture) existingUser.picture = picture;
+      if (!existingUser.picture) {
+        existingUser.picture = picture;
+      }
       return existingUser.save();
     }
     const username = generateUsername(email);
@@ -201,6 +197,7 @@ userSchema.statics = {
       email,
       password,
       name,
+      username,
       picture,
     });
 
