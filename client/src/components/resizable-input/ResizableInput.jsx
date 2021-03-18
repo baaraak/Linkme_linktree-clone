@@ -1,7 +1,8 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 import './styles.scss';
-const ResizableInput = ({ defaultValue, onChange, placeholder, ...rest }) => {
+
+const ResizableInput = ({ defaultValue, onChange, placeholder, error, ...rest }) => {
   const [width, setWidth] = useState();
   const [value, setValue] = useState(defaultValue);
   const text = useRef();
@@ -15,7 +16,7 @@ const ResizableInput = ({ defaultValue, onChange, placeholder, ...rest }) => {
     onChange?.(e.target.value);
   };
   return (
-    <div className="resizable-input">
+    <div className={`resizable-input ${error ? 'error' : ''}`}>
       <input
         {...rest}
         style={{ width }}

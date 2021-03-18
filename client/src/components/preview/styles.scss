@@ -35,26 +35,6 @@ $device-silver-panel: #222;
       overflow: hidden;
     }
 
-    .device-stripe {
-      &::after,
-      &::before {
-        border: solid rgba(#333, 0.25);
-        border-width: 0 7px;
-        content: '';
-        height: 7px;
-        left: 0;
-        position: absolute;
-        width: 100%;
-        z-index: 9;
-      }
-      &::after {
-        top: 85px;
-      }
-      &::before {
-        bottom: 85px;
-      }
-    }
-
     .device-header {
       background: $device-silver-panel;
       border-bottom-left-radius: 20px;

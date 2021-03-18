@@ -1,6 +1,6 @@
 import { useSite } from 'context/site.context';
 import React from 'react';
-import Site from 'screens/:username';
+import Site from 'screens/site';
 import { generateSiteUrl } from 'services/utils';
 import './styles.scss';
 const Preview = ({ username }) => {
@@ -14,7 +14,6 @@ const Preview = ({ username }) => {
             <Site site={site} />
           </div>
         </div>
-        <div class="device-stripe"></div>
         <div class="device-header"></div>
         <div class="device-sensors"></div>
         <div class="device-btns"></div>

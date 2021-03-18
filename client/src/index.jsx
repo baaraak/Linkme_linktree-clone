@@ -9,7 +9,7 @@ import reportWebVitals from './reportWebVitals';
 import { AuthProvider } from './context/auth.context';
 import { Routes } from './routes';
 import api from './services/api';
-import Site from './screens/:username';
+import Site from './screens/site';
 
 async function init() {
   const { pathname } = window.location;
