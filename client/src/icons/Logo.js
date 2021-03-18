@@ -1,3 +1,5 @@
+import React from 'react';
+
 export default function GoogleIcon({ width = 512, height = 512 }) {
   return (
     <svg

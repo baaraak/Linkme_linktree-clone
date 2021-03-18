@@ -53,7 +53,10 @@ const Themes = ({ theme = 1 }) => {
       </Strong>
       <div className="box shadow-sm">
         {themes.map((t) => (
-          <div className={`theme ${t.id === theme ? 'theme--selected' : ''}`}>
+          <div
+            key={t}
+            className={`theme ${t.id === theme ? 'theme--selected' : ''}`}
+          >
             <div className="theme__thumbnail">
               <img src={t.thumbnail} alt="" />
             </div>

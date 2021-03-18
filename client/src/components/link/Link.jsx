@@ -47,7 +47,7 @@ const AnalyticComponent = ({ clicks }) => {
 };
 
 const ThumbnailComponent = ({ onThumbnail }) => {
-  return <div>"ThumbnailComponent"</div>;
+  return <div>ThumbnailComponent</div>;
 };
 
 const Messages = {

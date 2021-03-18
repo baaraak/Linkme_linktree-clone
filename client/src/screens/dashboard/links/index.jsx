@@ -1,3 +1,4 @@
+import React from 'react';
 import { Heading, Text } from 'evergreen-ui';
 import Button from 'components/button/Button';
 import useLinks from './useLinks';

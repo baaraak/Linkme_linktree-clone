@@ -8,17 +8,17 @@ const Preview = ({ username }) => {
 
   return (
     <div className="preview">
-      <div class="device device-iphone-x">
-        <div class="device-frame">
+      <div className="device device-iphone-x">
+        <div className="device-frame">
           <div className="device-content">
             <Site site={site} />
           </div>
         </div>
-        <div class="device-header"></div>
-        <div class="device-sensors"></div>
-        <div class="device-btns"></div>
-        <div class="device-power"></div>
-        <div class="device-home"></div>
+        <div className="device-header"></div>
+        <div className="device-sensors"></div>
+        <div className="device-btns"></div>
+        <div className="device-power"></div>
+        <div className="device-home"></div>
       </div>
     </div>
   );
