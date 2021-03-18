@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Menu,
-  Avatar,
   UserIcon,
   CogIcon,
   StarEmptyIcon,
@@ -19,6 +18,7 @@ import useWindowDimensions from 'hooks/useWindowDimensions';
 import { Routes } from 'routes';
 
 import './header.scss';
+import Avatar from 'components/avatar/Avatar';
 
 export default function Header({ username, avatar, onLogout }) {
   const { width } = useWindowDimensions();
@@ -63,7 +63,13 @@ export default function Header({ username, avatar, onLogout }) {
               </Pane>
             }
           >
-            {!isMobile ? <Avatar src={avatar} size={45} /> : <MenuIcon size={20} />}
+            <div>
+              {!isMobile ? (
+                <Avatar src={avatar} size={45} />
+              ) : (
+                <MenuIcon size={20} />
+              )}
+            </div>
           </Popover>
         </div>
       </div>

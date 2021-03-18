@@ -5,17 +5,57 @@ import ReactGPicker from 'react-gcolor-picker';
 
 import { CLOUD_NAME, useCloudinaryWidget } from 'services/cloudinary';
 
-const BACKGROUNDS = [
-  'flowers',
-  'gradient',
-  'lights',
-  'mounts',
-  'rain',
-  'music',
-  'stars',
-  'wood',
-  'tech',
-  'road',
+export const BACKGROUNDS = [
+  {
+    id: 'flowers',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500636/linkme/flowers.jpg',
+  },
+  {
+    id: 'gradient',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500644/linkme/gradient.jpg',
+  },
+  {
+    id: 'lights',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500651/linkme/lights.jpg',
+  },
+  {
+    id: 'mounts',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500658/linkme/mounts.jpg',
+  },
+  {
+    id: 'rain',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500667/linkme/rain.jpg',
+  },
+  {
+    id: 'music',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500674/linkme/music.jpg',
+  },
+  {
+    id: 'stars',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500684/linkme/stars.jpg',
+  },
+  {
+    id: 'wood',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615500695/linkme/wood.jpg',
+  },
+  {
+    id: 'tech',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615501827/linkme/tech.jpg',
+  },
+  {
+    id: 'road',
+    url:
+      'https://res.cloudinary.com/djyerevgr/image/upload/v1615501844/linkme/road.jpg',
+  },
 ];
 
 const Background = ({ background, onChange }) => {
@@ -52,13 +92,15 @@ const Background = ({ background, onChange }) => {
 
         {BACKGROUNDS.map((bg) => (
           <div
-            key={bg}
-            onClick={() => onChange({ background: bg })}
-            className={`box-item ${bg === background ? 'box-item--selected' : ''}`}
+            key={bg.id}
+            onClick={() => onChange({ background: bg.id })}
+            className={`box-item ${
+              bg.id === background ? 'box-item--selected' : ''
+            }`}
           >
             <div className="box-item__thumbnail">
               <Image
-                publicId={`linkme/${bg}.jpg`}
+                publicId={`linkme/${bg.id}.jpg`}
                 cloudName={CLOUD_NAME}
                 secure="true"
               >
@@ -66,7 +108,7 @@ const Background = ({ background, onChange }) => {
               </Image>
             </div>
             <div className="box-item__name">
-              <Text>{bg.toUpperCase()}</Text>
+              <Text>{bg.id.toUpperCase()}</Text>
             </div>
           </div>
         ))}

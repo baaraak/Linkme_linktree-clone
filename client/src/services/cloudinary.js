@@ -11,6 +11,7 @@ export const Cloudinary = {
     cropping: true,
     multiple: false,
     resourceType: 'image',
+    clientAllowedFormats: ['png', 'jpg', 'jpeg'],
   },
 };
 

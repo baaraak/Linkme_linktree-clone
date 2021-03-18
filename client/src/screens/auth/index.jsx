@@ -65,10 +65,11 @@ export default function AuthScreen() {
         title={
           <div>
             <span style={{ marginRight: '20px' }}>
-              <Strong>Email:</Strong>
+              <Strong>Email:</Strong>&nbsp;&nbsp;
               <Text>admin@gmail.com</Text>
             </span>
-            <Strong>Password:</Strong>
+            <br />
+            <Strong>Password:</Strong>&nbsp;&nbsp;
             <Text>123123</Text>
           </div>
         }

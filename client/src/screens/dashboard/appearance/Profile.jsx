@@ -1,15 +1,10 @@
-import {
-  Avatar,
-  Strong,
-  Textarea,
-  TextareaField,
-  TextInputField,
-} from 'evergreen-ui';
+import { Strong, Textarea, TextareaField, TextInputField } from 'evergreen-ui';
 import Button from 'components/button/Button';
 import React from 'react';
 import { Transformation, Image, Placeholder } from 'cloudinary-react';
 import { loadScript } from 'services/utils';
 import { Cloudinary, CLOUD_NAME, useCloudinaryWidget } from 'services/cloudinary';
+import Avatar from 'components/avatar/Avatar';
 
 const Profile = ({ username, avatar, title, bio, onChange }) => {
   const { widget } = useCloudinaryWidget((error, result) => {

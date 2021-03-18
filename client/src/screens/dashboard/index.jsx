@@ -29,8 +29,8 @@ export default function DashboardScreen() {
       <Header username={user.username} avatar={user.avatar} onLogout={logout} />
       <Toolbar username={user.username} />
       <Menu />
-      <div className="page">
-        <SiteProvider>
+      <SiteProvider>
+        <div className="page">
           <React.Suspense fallback={<Spinner />}>
             <Switch>
               <Route path={Routes.Account}>
@@ -48,9 +48,9 @@ export default function DashboardScreen() {
               </Route>
             </Switch>
           </React.Suspense>
-        </SiteProvider>
-      </div>
-      {width > MINIMUM_PREVIEW_WIDTH && <Preview username={user.username} />}
+        </div>
+        {width > MINIMUM_PREVIEW_WIDTH && <Preview username={user.username} />}
+      </SiteProvider>
     </div>
   );
 }
