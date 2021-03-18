@@ -1,11 +1,9 @@
-import { Alert, Link, Text, TextInputField } from 'evergreen-ui';
+import { Alert, Link, TextInputField } from 'evergreen-ui';
 import { Link as RouterLink } from 'react-router-dom';
 import React, { useState } from 'react';
-import Joi from 'joi';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { useForm, Controller } from 'react-hook-form';
 import { signinSchema } from 'services/validations';
-import GoogleIcon from 'icons/Google';
 import Button from 'components/button/Button';
 import { useAuth } from 'context/auth.context';
 
@@ -66,7 +64,13 @@ export default function SignIn() {
           />
         )}
       />
-      <Button fullWidth type="submit" appearance="primary" height={40}>
+      <Button
+        isLoading={loading}
+        fullWidth
+        type="submit"
+        appearance="primary"
+        height={40}
+      >
         Log in
       </Button>
       <Link

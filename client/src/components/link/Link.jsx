@@ -46,7 +46,7 @@ const AnalyticComponent = ({ clicks }) => {
   );
 };
 
-const ThumbnailComponent = ({ onThumbnail }) => {
+const ThumbnailComponent = ({}) => {
   return <div>ThumbnailComponent</div>;
 };
 
@@ -71,7 +71,6 @@ const Messages = {
 const Link = ({
   title,
   href,
-  active,
   provided,
   isDragging,
   clicks,

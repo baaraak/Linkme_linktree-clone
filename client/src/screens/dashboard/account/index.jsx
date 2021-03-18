@@ -82,7 +82,7 @@ export default function Account() {
             )}
           />
         </div>
-        <Button height={50} type="submit" disabled={!isDirty}>
+        <Button isLoading={loading} height={50} type="submit" disabled={!isDirty}>
           Save details
         </Button>
       </form>

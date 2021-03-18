@@ -10,6 +10,8 @@
 
 ![App screenshot](https://i.ibb.co/W3qVvCn/jira-jpg)
 
+## Work in progress
+
 ## Setting up development environment 🛠
 
 - `git clone https://github.com/baaraak/Linkme_linktree-clone.git`
@@ -17,10 +19,6 @@
 - `yarn client` - Client development server
 - `yarn api` - Nodemon dev server
 - App should now be running on `http://localhost:3000/`
-
-## What's missing?
-
-There are features missing from this showcase product which should exist in a real product:
 
 ## License
 

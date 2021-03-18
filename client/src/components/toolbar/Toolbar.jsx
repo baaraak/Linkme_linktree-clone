@@ -1,14 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import {
-  Dialog,
-  Link,
-  Menu,
-  Pane,
-  Popover,
-  Strong,
-  Text,
-  toaster,
-} from 'evergreen-ui';
+import React, { useMemo, useState } from 'react';
+import { Dialog, Link, Menu, Popover, Strong, Text, toaster } from 'evergreen-ui';
 import QRCode from 'qrcode';
 import Button from 'components/button/Button';
 

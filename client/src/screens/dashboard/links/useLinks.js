@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { useSite } from 'context/site.context';
 import api from 'services/api';
 
@@ -36,10 +36,6 @@ export default function useLinks() {
     },
     [updateLinks],
   );
-
-  const sortedLinks = useMemo(() => links.sort((a, b) => a.index - b.index), [
-    links,
-  ]);
 
   return { links, create, onDelete, reOrder, update };
 }

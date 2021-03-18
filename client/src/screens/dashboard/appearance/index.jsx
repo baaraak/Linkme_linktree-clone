@@ -1,8 +1,6 @@
 import React from 'react';
 import Profile from './Profile';
-import Themes from './Themes';
 import Background from './Background';
-import Fonts from './Fonts';
 import Buttons from './Buttons';
 import { useAuth } from 'context/auth.context';
 import { useSite } from 'context/site.context';

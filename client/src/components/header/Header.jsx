@@ -10,7 +10,6 @@ import {
   MenuIcon,
   Pane,
   Popover,
-  Position,
 } from 'evergreen-ui';
 import Logo from 'components/logo/Logo';
 

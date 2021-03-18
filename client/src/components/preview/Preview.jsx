@@ -1,9 +1,8 @@
 import { useSite } from 'context/site.context';
 import React from 'react';
 import Site from 'screens/site';
-import { generateSiteUrl } from 'services/utils';
 import './styles.scss';
-const Preview = ({ username }) => {
+const Preview = () => {
   const { data: site } = useSite();
 
   return (

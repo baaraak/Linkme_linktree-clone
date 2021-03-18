@@ -1,5 +1,5 @@
 import Avatar from 'components/avatar/Avatar';
-import { Heading, Strong, Text } from 'evergreen-ui';
+import { Heading, Text } from 'evergreen-ui';
 import React, { useMemo } from 'react';
 import { BACKGROUNDS } from 'screens/dashboard/appearance/Background';
 import './styles.scss';

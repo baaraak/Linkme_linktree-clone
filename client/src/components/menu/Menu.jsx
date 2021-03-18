@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Routes } from 'routes';
 
 import './menu.scss';

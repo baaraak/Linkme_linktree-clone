@@ -2,7 +2,6 @@ import {
   Button,
   ChevronDownIcon,
   ChevronUpIcon,
-  Help,
   HelpIcon,
   Strong,
   Text,

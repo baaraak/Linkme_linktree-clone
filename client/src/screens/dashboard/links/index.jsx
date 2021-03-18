@@ -1,12 +1,10 @@
 import React from 'react';
-import { Heading, Text } from 'evergreen-ui';
 import Button from 'components/button/Button';
 import useLinks from './useLinks';
 import Analytics from 'components/analytics/Analytics';
 import Link from 'components/link/Link';
 import { reorder } from 'services/utils';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useMemo, useState } from 'react';
 
 export default function Links() {
   const { links, create, onDelete, reOrder, update } = useLinks();
@@ -44,7 +42,7 @@ export default function Links() {
           {links.length > 0 ? (
             <DragDropContext onDragEnd={onDragEnd}>
               <Droppable droppableId="droppable">
-                {(provided, snapshot) => (
+                {(provided) => (
                   <div {...provided.droppableProps} ref={provided.innerRef}>
                     {links.map((link, index) => (
                       <Draggable key={link._id} draggableId={link._id} index={index}>

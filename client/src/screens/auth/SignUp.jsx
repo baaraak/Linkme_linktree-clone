@@ -1,13 +1,10 @@
-import Joi from 'joi';
 import { joiResolver } from '@hookform/resolvers/joi';
 import { useForm, Controller } from 'react-hook-form';
-import { Text, TextInputField, Link, Alert } from 'evergreen-ui';
+import { TextInputField, Link, Alert } from 'evergreen-ui';
 import { Link as RouterLink } from 'react-router-dom';
 import React, { useState } from 'react';
 import { signupSchema } from 'services/validations';
 import Button from 'components/button/Button';
-import api from 'services/api';
-import { storeAuthToken } from 'services/token';
 import { useAuth } from 'context/auth.context';
 
 export default function SignUp() {

@@ -1,14 +1,13 @@
-import { Alert, Link, Strong, Text, TextInputField } from 'evergreen-ui';
-import React, { useState } from 'react';
+import { Alert, Strong, Text } from 'evergreen-ui';
+import React from 'react';
 import { useGoogleLogin } from 'react-google-login';
 import Button from 'components/button/Button';
 import Logo from 'components/logo/Logo';
-import { useSpring, animated as a } from 'react-spring';
 import './styles.scss';
 import GoogleIcon from 'icons/Google';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { useAuth } from 'context/auth.context';
 import { Routes } from 'routes';
 import { GOOGLE_CLIENT_ID } from 'services/constants';
