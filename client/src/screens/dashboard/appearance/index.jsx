@@ -18,7 +18,7 @@ export default function Appearance() {
         bio={user.bio}
       />
       <Background background={site.background} onChange={updateSite} />
-      <Buttons />
+      <Buttons onChange={updateSite} button={site.button} />
       {/* <Themes />
       {/* <Fonts />*/}
     </div>

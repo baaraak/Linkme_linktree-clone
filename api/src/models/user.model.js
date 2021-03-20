@@ -5,7 +5,7 @@ const moment = require("moment-timezone");
 const jwt = require("jwt-simple");
 const uuidv4 = require("uuid/v4");
 const APIError = require("../utils/APIError");
-const { jwtSecret } = require("../config/constants");
+const { jwtSecret, defaultAvatar } = require("../config/constants");
 const { generateUsername } = require("../utils/generateUsername");
 const Site = require("./site.model");
 
@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema(
     },
     bio: String,
     title: String,
-    avatar: String,
+    avatar: { type: String, default: defaultAvatar },
     email: {
       type: String,
       required: true,
@@ -177,16 +177,13 @@ userSchema.statics = {
     return error;
   },
 
-  async oAuthLogin({ id, email, name, picture }) {
+  async oAuthLogin({ id, email, name: fullName }) {
     const existingUser = await this.findOne({
       $or: [{ googleId: id }, { email }],
     });
     if (existingUser) {
       existingUser.googleId = id;
-      if (!existingUser.name) existingUser.name = name;
-      if (!existingUser.picture) {
-        existingUser.picture = picture;
-      }
+      if (!existingUser.fullName) existingUser.fullName = fullName;
       return existingUser.save();
     }
     const username = generateUsername(email);
@@ -196,9 +193,8 @@ userSchema.statics = {
       googleId: id,
       email,
       password,
-      name,
+      fullName,
       username,
-      picture,
     });
 
     const site = new Site({

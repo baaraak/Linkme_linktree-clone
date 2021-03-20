@@ -42,83 +42,83 @@
       }
     }
   }
-}
-.link {
-  background: #fff;
+  .link {
+    background: #fff;
 
-  height: 120px;
-  border-radius: 5px;
-  display: flex;
-  &__handle {
-    height: 100%;
+    height: 120px;
+    border-radius: 5px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    border-right: 1px solid #d7dce1;
-    cursor: move;
-    svg {
-      fill: #acb5bf;
-      width: 20px;
-    }
-  }
-
-  &__content {
-    padding: 1rem 0 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    overflow: hidden;
-    .input {
+    &__handle {
+      height: 100%;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      border-right: 1px solid #d7dce1;
+      cursor: move;
       svg {
-        color: #bec1c3;
+        fill: #acb5bf;
+        width: 20px;
       }
-      input {
-        border: none;
-        outline: none;
-        font-size: 0.9rem;
-      }
-      &.link__title {
-        margin-bottom: 0.5rem;
-        font-weight: bold;
+    }
 
+    &__content {
+      padding: 1rem 0 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+      .input {
+        display: flex;
+        svg {
+          color: #bec1c3;
+        }
         input {
+          border: none;
+          outline: none;
+          font-size: 0.9rem;
+        }
+        &.link__title {
+          margin-bottom: 0.5rem;
           font-weight: bold;
-          font-size: 1rem;
+
+          input {
+            font-weight: bold;
+            font-size: 1rem;
+          }
         }
       }
     }
-  }
 
-  &__actions {
-    display: flex;
-    margin-top: auto;
-    > div {
-      margin-right: 1rem;
-      opacity: 0.5;
-      cursor: pointer;
-      transition: opacity 300ms ease;
-      &:hover {
-        opacity: 0.8;
+    &__actions {
+      display: flex;
+      margin-top: auto;
+      > div {
+        margin-right: 1rem;
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 300ms ease;
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
-  }
 
-  &__status {
-    padding: 1rem;
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    &__status {
+      padding: 1rem;
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
 
-    .trash {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: opacity 300ms ease;
-      &:hover {
-        opacity: 0.8;
+      .trash {
+        opacity: 0.5;
+        cursor: pointer;
+        transition: opacity 300ms ease;
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
   }

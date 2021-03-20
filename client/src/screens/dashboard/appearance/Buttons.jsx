@@ -1,9 +1,46 @@
-import { Strong, Text } from 'evergreen-ui';
-import React from 'react';
+import Button from 'components/button/Button';
+import { Dialog, Strong } from 'evergreen-ui';
+import React, { useState } from 'react';
+import ReactGPicker from 'react-gcolor-picker';
 
-const buttons = ['fill', 'outline', 'hard-shadow', 'soft-shadow'];
+const buttons = [
+  { type: 'fill', label: 'Fill', variants: ['regular', 'rounded', 'fullrounded'] },
+  {
+    type: 'outline',
+    label: 'Outline',
+    variants: ['regular', 'rounded', 'fullrounded'],
+  },
+  {
+    type: 'hard-shadow',
+    label: 'Hard Shadow',
+    variants: ['regular', 'rounded', 'fullrounded'],
+  },
+  {
+    type: 'soft-shadow',
+    label: 'Soft Shadow',
+    variants: ['regular', 'rounded', 'fullrounded'],
+  },
+  {
+    type: 'special',
+    label: 'Special',
+    variants: [],
+  },
+];
 
-const Buttons = ({ button = 1 }) => {
+const Buttons = ({ onChange, button = { id: 'outline-rounded', color: 'red' } }) => {
+  const [colorPickerOpen, setColorPickerOpen] = useState(false);
+  const [buttonColor, setButtonColor] = useState(button.color);
+  const onColorChange = (value) => {
+    console.log(value);
+    setButtonColor(value);
+  };
+
+  const onCancelColor = () => {
+    // reset color and close modal
+    setButtonColor(button.color);
+    setColorPickerOpen(false);
+  };
+  console.log(buttonColor);
   return (
     <div className="buttons">
       <Strong size={600} className="box__title">
@@ -11,19 +48,69 @@ const Buttons = ({ button = 1 }) => {
       </Strong>
       <div className="box shadow-sm">
         {buttons.map((t) => (
-          <div
-            key={t}
-            className={`button ${t.id === button ? 'button--selected' : ''}`}
-          >
-            <div className="button__thumbnail">
-              <img src={t.thumbnail} alt="" />
-            </div>
-            <div className="button__name">
-              <Text>Theme {t.id}</Text>
+          <div key={t.type}>
+            <Strong>{t.label}</Strong>
+            <div className="variants">
+              {t.variants.map((v, i) => {
+                const buttonId = `${t.type}-${v}`;
+                return (
+                  <div
+                    key={v}
+                    onClick={() => onChange({ button: { id: buttonId } })}
+                    className={`button__wrapper ${
+                      buttonId === button.id ? 'button__wrapper--selected' : ''
+                    }`}
+                  >
+                    <Button
+                      height={40}
+                      fullWidth
+                      className={`linkme_btn ${t.type} ${t.type}-${v} ${v}`}
+                      style={{
+                        borderColor: buttonColor,
+                        backgroundColor: buttonColor,
+                      }}
+                    ></Button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         ))}
+        <div className="color">
+          <Strong>Button color</Strong>
+          <div className="color__picker" onClick={() => setColorPickerOpen(true)}>
+            <div
+              className="color__preview shadow"
+              style={{ background: buttonColor }}
+            />
+            <Strong size={300}>Change color</Strong>
+          </div>
+        </div>
       </div>
+      <Dialog
+        isShown={colorPickerOpen}
+        onCloseComplete={() => setColorPickerOpen(false)}
+        hasHeader={false}
+        width={'auto'}
+        hasFooter={false}
+      >
+        <ReactGPicker value={buttonColor} gradient onChange={onColorChange} />
+        <div className="color-preview-footer">
+          <Button height={40} onClick={onCancelColor}>
+            Cancel
+          </Button>
+          <Button
+            height={40}
+            appearance="primary"
+            onClick={() => {
+              setColorPickerOpen(false);
+              onChange({ button: { color: buttonColor } });
+            }}
+          >
+            Choose
+          </Button>
+        </div>
+      </Dialog>
     </div>
   );
 };

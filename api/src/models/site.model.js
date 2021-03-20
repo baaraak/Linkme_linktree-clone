@@ -7,7 +7,10 @@ const siteSchema = new mongoose.Schema(
       type: String,
       default: "basic",
     },
-    buttons: { type: String, default: "rounded" },
+    button: {
+      id: { type: String, default: "outline-rounded" },
+      color: { type: String, default: "#fff" },
+    },
     fonts: { type: String, default: "Arial" },
     user: {
       type: mongoose.Schema.Types.ObjectId,

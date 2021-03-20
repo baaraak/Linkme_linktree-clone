@@ -6,9 +6,10 @@ $device-silver-panel: #222;
   background: #f5f6f8;
   border-top: 1px solid rgb(218, 222, 224);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 1rem;
+  overflow: auto;
 
   /*
     * Device css credit: https://github.com/picturepan2/devices.css
@@ -33,6 +34,11 @@ $device-silver-panel: #222;
       height: 812px;
       width: 375px;
       overflow: hidden;
+
+      * {
+        pointer-events: none;
+        user-select: none;
+      }
     }
 
     .device-header {
@@ -43,7 +49,7 @@ $device-silver-panel: #222;
       left: 50%;
       margin-left: -102px;
       position: absolute;
-      top: 28px;
+      top: 26px;
       width: 204px;
 
       &::after,
@@ -142,6 +148,8 @@ $device-silver-panel: #222;
     position: relative;
     z-index: 1;
     transform: scale(0.5);
+
+    transform-origin: top;
   }
 
   .device .device-frame {
@@ -164,7 +172,7 @@ $device-silver-panel: #222;
 
   @media only screen and (min-width: 1260px) {
     .device {
-      transform: scale(1);
+      transform: scale(0.8);
     }
   }
 }

@@ -4,6 +4,7 @@ import { Dialog, Strong, Text } from 'evergreen-ui';
 import ReactGPicker from 'react-gcolor-picker';
 
 import { CLOUD_NAME, useCloudinaryWidget } from 'services/cloudinary';
+import Button from 'components/button/Button';
 
 export const BACKGROUNDS = [
   {
@@ -121,6 +122,14 @@ const Background = ({ background, onChange }) => {
         width={'auto'}
       >
         <ReactGPicker value="red" onChange={handleColorChange} gradient />
+        <div className="color-preview-footer">
+          <Button height={40} onClick={() => setColorPickerOpen(false)}>
+            Cancel
+          </Button>
+          <Button height={40} appearance="primary">
+            Choose
+          </Button>
+        </div>
       </Dialog>
     </div>
   );

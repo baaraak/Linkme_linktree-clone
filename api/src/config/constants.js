@@ -21,4 +21,5 @@ module.exports = {
     username: process.env.EMAIL_USERNAME,
     password: process.env.EMAIL_PASSWORD,
   },
+  defaultAvatar: "linkme/hyp6o7qgocd7ztw5yifc",
 };

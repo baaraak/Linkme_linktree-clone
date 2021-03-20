@@ -1,48 +1,21 @@
 import { Strong, Text } from 'evergreen-ui';
 import React from 'react';
 
-const themes = [
-  {
-    id: 1,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-ukelaylie.png',
-  },
-  {
-    id: 2,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-confetti.png',
-  },
-  {
-    id: 3,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-rainbow.png',
-  },
-  {
-    id: 4,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-ukelaylie.png',
-  },
-  {
-    id: 5,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-ukelaylie.png',
-  },
-  ,
-  {
-    id: 6,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-confetti.png',
-  },
-  {
-    id: 7,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-rainbow.png',
-  },
-  {
-    id: 8,
-    thumbnail:
-      'https://assets.production.linktr.ee/40d15a7568e6254d846e5a00fead987973fbf174/images/themes/selector-ukelaylie.png',
-  },
+const FONTS = [
+  { id: 'Anton', label: 'Anton' },
+  { id: 'Changa', label: 'Changa' },
+  { id: 'Courgette', label: 'Courgette' },
+  { id: 'Danicing_Script', label: 'Danicing_Script' },
+  { id: 'Fredoka_One', label: 'Fredoka_One' },
+  { id: 'Indie_Flower', label: 'Indie_Flower' },
+  { id: 'Josefin_Sans', label: 'Josefin_Sans' },
+  { id: 'Pacifico', label: 'Pacifico' },
+  { id: 'Playfair_Display', label: 'Playfair_Display' },
+  { id: 'Poppings', label: 'Poppings' },
+  { id: 'Rajdhani', label: 'Rajdhani' },
+  { id: 'Rboto', label: 'Rboto' },
+  { id: 'Teko', label: 'Teko' },
+  { id: 'Titililnim_web', label: 'Titililnim_web' },
 ];
 
 const Fonts = ({ theme = 1 }) => {
