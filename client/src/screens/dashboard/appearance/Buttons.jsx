@@ -1,5 +1,5 @@
 import Button from 'components/button/Button';
-import { Dialog, Strong } from 'evergreen-ui';
+import { Dialog, SegmentedControl, Strong } from 'evergreen-ui';
 import React, { useState } from 'react';
 import ReactGPicker from 'react-gcolor-picker';
 
@@ -47,35 +47,39 @@ const Buttons = ({ onChange, button = { id: 'outline-rounded', color: 'red' } })
         Buttons
       </Strong>
       <div className="box shadow-sm">
-        {buttons.map((t) => (
-          <div key={t.type}>
-            <Strong>{t.label}</Strong>
-            <div className="variants">
-              {t.variants.map((v, i) => {
-                const buttonId = `${t.type}-${v}`;
-                return (
-                  <div
-                    key={v}
-                    onClick={() => onChange({ button: { id: buttonId } })}
-                    className={`button__wrapper ${
-                      buttonId === button.id ? 'button__wrapper--selected' : ''
-                    }`}
-                  >
-                    <Button
-                      height={40}
-                      fullWidth
-                      className={`linkme_btn ${t.type} ${t.type}-${v} ${v}`}
-                      style={{
-                        borderColor: buttonColor,
-                        backgroundColor: buttonColor,
-                      }}
-                    ></Button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        ))}
+        <div className="field">
+          <Strong>Shadow Type</Strong>
+          <SegmentedControl
+            options={[
+              { label: 'Small', value: 'small' },
+              { label: 'medium', value: 'medium' },
+              { label: 'large', value: 'large' },
+              { label: 'Extra Large', value: 'xlarge' },
+            ]}
+          />
+        </div>
+        <div className="field">
+          <Strong>Size</Strong>
+          <SegmentedControl
+            options={[
+              { label: 'Small', value: 'small' },
+              { label: 'medium', value: 'medium' },
+              { label: 'large', value: 'large' },
+              { label: 'Extra Large', value: 'xlarge' },
+            ]}
+          />
+        </div>
+        <div className="field">
+          <Strong>Size</Strong>
+          <SegmentedControl
+            options={[
+              { label: 'Small', value: 'small' },
+              { label: 'medium', value: 'medium' },
+              { label: 'large', value: 'large' },
+              { label: 'Extra Large', value: 'xlarge' },
+            ]}
+          />
+        </div>
         <div className="color">
           <Strong>Button color</Strong>
           <div className="color__picker" onClick={() => setColorPickerOpen(true)}>

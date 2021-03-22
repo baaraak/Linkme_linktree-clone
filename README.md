@@ -1,4 +1,4 @@
-<h1 align="center">Linktree clone built with React and Node</h1>
+<h1 align="center">Linktree clone built with React and Node (work in progress...)</h1>
 
 <div align="center">React.js, Hooks, Context API, Express.js, MongoDB and more 🎗</div>
 
@@ -8,9 +8,9 @@
   <a href="https://github.com/baaraak/Linkme_linktree-clone/tree/master/api">View API</a>
 </h3>
 
-![App screenshot](https://i.ibb.co/W3qVvCn/jira-jpg)
-
 ## Work in progress
+
+![App screenshot](https://i.ibb.co/W3qVvCn/jira-jpg)
 
 ## Setting up development environment 🛠
 

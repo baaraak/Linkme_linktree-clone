@@ -4,7 +4,9 @@ import Site from 'screens/site';
 import './styles.scss';
 const Preview = () => {
   const { data: site } = useSite();
-
+  console.log('***********************');
+  console.log(site);
+  console.log('***********************');
   return (
     <div className="preview">
       <div className="device device-iphone-x">
