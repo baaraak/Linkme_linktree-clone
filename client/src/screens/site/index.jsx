@@ -5,6 +5,11 @@ import { BACKGROUNDS } from 'screens/dashboard/appearance/Background';
 import './styles.scss';
 
 const Site = ({ site }) => {
+  console.log('***********************');
+  console.log('site');
+  console.log(site.user.title);
+  console.log(site.user.bio);
+  console.log('***********************');
   const backgroundUrl = useMemo(() => {
     return BACKGROUNDS.find((b) => b.id === site.background).url;
   }, [site.background]);

@@ -1,5 +1,5 @@
 import Button from 'components/button/Button';
-import { Dialog, SegmentedControl, Strong } from 'evergreen-ui';
+import { Dialog, Strong } from 'evergreen-ui';
 import React, { useState } from 'react';
 import ReactGPicker from 'react-gcolor-picker';
 
@@ -47,39 +47,11 @@ const Buttons = ({ onChange, button = { id: 'outline-rounded', color: 'red' } })
         Buttons
       </Strong>
       <div className="box shadow-sm">
-        <div className="field">
-          <Strong>Shadow Type</Strong>
-          <SegmentedControl
-            options={[
-              { label: 'Small', value: 'small' },
-              { label: 'medium', value: 'medium' },
-              { label: 'large', value: 'large' },
-              { label: 'Extra Large', value: 'xlarge' },
-            ]}
-          />
-        </div>
-        <div className="field">
-          <Strong>Size</Strong>
-          <SegmentedControl
-            options={[
-              { label: 'Small', value: 'small' },
-              { label: 'medium', value: 'medium' },
-              { label: 'large', value: 'large' },
-              { label: 'Extra Large', value: 'xlarge' },
-            ]}
-          />
-        </div>
-        <div className="field">
-          <Strong>Size</Strong>
-          <SegmentedControl
-            options={[
-              { label: 'Small', value: 'small' },
-              { label: 'medium', value: 'medium' },
-              { label: 'large', value: 'large' },
-              { label: 'Extra Large', value: 'xlarge' },
-            ]}
-          />
-        </div>
+        {buttons.map((b) => (
+          <div className="button" key={b}>
+            <button className={b}>Click Here</button>
+          </div>
+        ))}
         <div className="color">
           <Strong>Button color</Strong>
           <div className="color__picker" onClick={() => setColorPickerOpen(true)}>
